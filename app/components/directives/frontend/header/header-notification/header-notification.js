@@ -6,17 +6,16 @@
  * @description
  * # adminPosHeader
  */
-
 angular.module('sbAdminApp')
-    .directive('sidebarSearch', function () {
+    .directive('headerNotification', function () {
         return {
-            templateUrl: 'components/directives/sidebar/sidebar-search/sidebar-search.html',
+            templateUrl: 'components/directives/frontend/header/header-notification/header-notification.html',
             restrict: 'E',
             replace: true,
-            scope: {
-            },
             controller: function ($scope) {
-                $scope.selectedMenu = 'home';
+                $scope.ameur = 'ameur';
             }
         }
     });
+
+
