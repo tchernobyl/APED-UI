@@ -11,10 +11,10 @@ angular.module('frontend-module', [])
                         {
                             name: 'sbAdminApp',
                             files: [
-                                'components/directives/header/header.js',
-                                'components/directives/header/header-notification/header-notification.js',
-                                'components/directives/sidebar/sidebar.js',
-                                'components/directives/sidebar/sidebar-search/sidebar-search.js',
+                                'components/directives/frontend/header/header.js',
+                                'components/directives/frontend/header/header-notification/header-notification.js',
+                                'components/directives/frontend/sidebar/sidebar.js',
+                                'components/directives/frontend/sidebar/sidebar-search/sidebar-search.js',
 
                                 'components/directives/timeline/timeline.js',
                                 'components/directives/notifications/notifications.js',

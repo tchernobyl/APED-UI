@@ -11,10 +11,10 @@ angular.module('backend-module', ['backend-module.dashboard2'])
                         {
                             name: 'sbAdminApp',
                             files: [
-                                'components/directives/header/header.js',
-                                'components/directives/header/header-notification/header-notification.js',
-                                'components/directives/sidebar/sidebar.js',
-                                'components/directives/sidebar/sidebar-search/sidebar-search.js',
+                                'components/directives/backend/header/header.js',
+                                'components/directives/backend/header/header-notification/header-notification.js',
+                                'components/directives/backend/sidebar/sidebar.js',
+                                'components/directives/backend/sidebar/sidebar-search/sidebar-search.js',
 
                                 'components/directives/timeline/timeline.js',
                                 'components/directives/notifications/notifications.js',
