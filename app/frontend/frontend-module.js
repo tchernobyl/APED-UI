@@ -1,4 +1,4 @@
-angular.module('frontend-module', [])
+angular.module('frontend-module', ["frontend-module.dashboard"])
     .config(['$stateProvider', function ($stateProvider) {
 
         $stateProvider.state('frontend', {
@@ -8,6 +8,7 @@ angular.module('frontend-module', [])
             resolve: {
                 loadMyDirectives: function ($ocLazyLoad) {
                     return $ocLazyLoad.load(
+
                         {
                             name: 'sbAdminApp',
                             files: [

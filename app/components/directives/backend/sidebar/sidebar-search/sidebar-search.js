@@ -8,7 +8,7 @@
  */
 
 angular.module('sbAdminApp')
-    .directive('sidebarSearch', function () {
+    .directive('sidebarSearchBackend', function () {
         return {
             templateUrl: 'components/directives/backend/sidebar/sidebar-search/sidebar-search.html',
             restrict: 'E',
