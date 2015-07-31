@@ -21,7 +21,8 @@ angular.module('backend-module', ['backend-module.dashboard2'])
                                 'components/directives/chat/chat.js',
                                 'components/directives/dashboard/stats/stats.js'
                             ]
-                        })
+                        }
+                    )
 
                 }
             }

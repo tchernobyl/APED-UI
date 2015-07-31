@@ -8,7 +8,7 @@
  */
 
 angular.module('sbAdminApp')
-    .directive('sidebar', ['$location', function () {
+    .directive('sidebarFrontend', ['$location', function () {
         return {
             templateUrl: 'components/directives/frontend/sidebar/sidebar.html',
             restrict: 'E',
