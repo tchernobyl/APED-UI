@@ -1,0 +1,152 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header" ng-if="category.id">Edit Category </h1>
+
+        <h1 class="page-header" ng-if="!category.id">Add Category </h1>
+    </div>
+
+
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Basic Form Elements
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <form role="form">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Name:</label>
+                                        <input ng-model="category.name" class="form-control">
+
+                                        <p class="help-block">the name must be unique .</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Parent: </label>
+
+                                        <select ui-select2 ng-model="category.parentId" class="form-control">
+
+                                            <option value="{{ parent.id }}" ng-show="parent.id!=category.id"
+                                                    ng-repeat="parent in categories">{{ parent.name }}
+                                            </option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Slug:</label>
+                                        <input ng-model="category.slug" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <div class="form-group">
+                                        <label>Short description:</label>
+                                        <textarea ng-model="category.shortDescription" class="form-control"></textarea>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-11">
+                                    <div class="form-group">
+                                        <label>Description:</label>
+                                        <textarea rows="6" ng-model="category.description"
+                                                  class="form-control"></textarea>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+                    <div class="col-sm-4">
+                        <form role="form">
+
+
+                            <div class="row">
+                                <div class="col-sm-12">
+
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><i class="fa fa-folder fa-fw"></i>
+                                            <label>
+
+                                                Add Brands
+                                                <a ng-click="AddBrands.open()">
+                                                    +
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="list-group">
+                                                <a ng-repeat="brand in category.brands "
+                                                   ui-sref="backend.brand.edit({id:brand.id})" class="list-group-item">
+                                                    {{brand.type}}
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-sm-12">
+
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><i class="fa fa-folder fa-fw"></i> Categories
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="list-group">
+                                                <a ng-repeat="categoryField in categoryFields "
+                                                   ui-sref="backend.category.edit({id:categoryField.id})"
+                                                   class="list-group-item">
+                                                    {{categoryField.name}}
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                    <div class="col-sm-12">
+
+                        <button type="submit" class="btn btn-success" data-ng-click="saveCategory()">Save</button>
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+

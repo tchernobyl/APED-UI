@@ -1,0 +1,37 @@
+<div class="modal-content">
+    <div class="modal-header">
+        <button ng-click="close()" type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Brand Categories</h4>
+    </div>
+    <div class="modal-body">
+
+        <div class="rows">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div style="cursor:  pointer;"
+                         ng-click="deleteCategory(brand)"
+                         class="alert alert-success"
+                         ng-repeat="brand in categoryBrands">
+                        <a>{{brand.type}}</a>
+
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div style="cursor:  pointer;"
+                         ng-click="selectCategory(brand)"
+                         class="alert alert-info"
+                         ng-repeat="brand in brands">
+                        <a>{{brand.type}}</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" ng-click="resetDefault()" class="btn btn-default">Reset</button>
+        <button type="button" class="btn btn-primary" ng-click="closeAndReturnCategories()">Save changes</button>
+    </div>
+</div>
