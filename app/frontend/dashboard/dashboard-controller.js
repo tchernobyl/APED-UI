@@ -13,4 +13,5 @@ angular.module('frontend-module.dashboard')
         ['$scope', '$modal', '$timeout',
             function ($scope, $modal, $timeout) {
 
+
             }]);

@@ -5,11 +5,27 @@
  */
 
 body {
-    background-color: #f8f8f8;
+    color: #353535;
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-size-adjust: 100%;
+    font-size-adjust: 100%;
+    font-weight: 400;
+}
+
+body {
+    overflow-x: hidden;
+    background: url(images/background-front.png);
+    height: 100%;
 }
 
 #wrapper {
     width: 100%;
+}
+
+.navbar-default {
+    background-color: transparent;
+    border-color: transparent;
 }
 
 #page-wrapper {

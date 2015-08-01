@@ -1,0 +1,18 @@
+<ul class="timeline">
+    <li class="time-label">
+                  <span class="bg-red">
+                     Top categories
+                  </span>
+    </li>
+    <li ng-repeat="topCategory in topCategories">
+        <i class="fa fa-folder bg-aqua"></i>
+
+        <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i>60</span>
+
+            <h3 class="timeline-header no-border"><a href="#">{{topCategory.name}}</a> {{topCategory.shortDescription}}
+            </h3>
+        </div>
+    </li>
+
+</ul>
