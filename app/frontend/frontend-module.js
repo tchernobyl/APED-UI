@@ -1,8 +1,8 @@
-angular.module('frontend-module', ["frontend-module.dashboard"])
+angular.module('frontend-module', ["frontend-module.dashboard", "frontend-module.advertisements"])
     .config(['$stateProvider', function ($stateProvider) {
 
         $stateProvider.state('frontend', {
-            abstract: false,
+            abstract: true,
             url: '/frontend',
             templateUrl: 'templates/frontend/main.html',
             resolve: {

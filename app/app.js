@@ -33,6 +33,7 @@ angular.module('sbAdminApp', [
         , 'frontend-module'
         , 'frontend-module.dashboard'
         , 'frontend-module.home'
+        , 'frontend-module.advertisements'
 
 
     ])
