@@ -2,5 +2,5 @@ angular.module('content-contents')
     .factory('ContentContents',
         ['Restangular', function (Restangular) {
 
-            return Restangular.service('content/content');
+            return Restangular.service('content/contents');
         }]);

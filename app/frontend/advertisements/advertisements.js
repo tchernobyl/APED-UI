@@ -4,5 +4,6 @@ angular.module('frontend-module.advertisements', [])
             url: '/advertisements',
             templateUrl: 'frontend/advertisements/advertisements.html'
 
+
         });
     }]);

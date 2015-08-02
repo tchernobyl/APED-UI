@@ -4,7 +4,7 @@ angular.module('frontend-module.advertisements')
         $stateProvider.state('frontend.advertisements.list', {
             url: '/list',
             templateUrl: 'frontend/advertisements/advertisements-list/advertisements-list.html',
-            controller: 'AdverccsdfController',
+            controller: 'AdvertisementsController',
             authenticate: true,
             resolve: {
                 _brands: [
@@ -12,15 +12,21 @@ angular.module('frontend-module.advertisements')
                     function (BrandBrands, $stateParams) {
                         return BrandBrands.getList();
                     }
+                ],
+                _announcementsList: [
+                    'ContentContents',
+                    function (ContentContents) {
+                        return ContentContents.getList();
+                    }
                 ]
             }
         });
     }])
-    .controller('AdverccsdfController',
-        ['$scope', '$modal', '$timeout', '_brands',
-            function ($scope, $modal, $timeout, _brands) {
+    .controller('AdvertisementsController',
+        ['$scope', '$modal', '$timeout', '_brands', '_announcementsList',
+            function ($scope, $modal, $timeout, _brands, _announcementsList) {
 
-                console.log(1121666)
                 $scope.brands = _brands.data;
+                $scope.announcementsList = _announcementsList.data;
 
             }]);

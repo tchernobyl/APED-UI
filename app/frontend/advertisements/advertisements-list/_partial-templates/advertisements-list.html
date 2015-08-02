@@ -1,0 +1,70 @@
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">List Announcements</h3>
+
+        <div class="box-tools pull-right">
+            <button ng-show="!listPanelDisabled" ng-click="listPanelDisabled=true" class="btn btn-box-tool"
+                    data-widget="collapse"><i class="fa fa-minus"></i></button>
+            <button ng-show="listPanelDisabled" ng-click="listPanelDisabled=false" class="btn btn-box-tool"
+                    data-widget="remove"><i class="glyphicon glyphicon-new-window"></i></button>
+        </div>
+    </div>
+
+    <div ng-if="!listPanelDisabled" class="box-body" style="display: block;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-body chat" id="chat-box">
+
+                    <div class="item" ng-repeat="announcement in announcementsList">
+                        <img src="dist/img/user4-128x128.jpg" alt="user image"
+                             ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
+
+                        <p class="message">
+                            <a href="#" class="name">
+                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i>
+                                    {{announcement.createdAt}}
+                                </small>
+                                {{announcement.name}}
+
+                            </a>
+                            {{announcement.shortDescription}}<a>Read more ..</a>
+
+                        </p>
+
+                        <div class="attachment">
+                            <h4>Attachments:</h4>
+
+                            <p class="filename">
+                                Price :{{announcement.price}}
+                            </p>
+
+                            <p class="filename">
+
+                            </p>
+
+                            <div class="pull-right">
+                                <small class="text-muted pull-right"><i class="fa fa-user"></i> hamdouni Ameur</small>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="box-footer">
+                        <div class="input-group">
+                            <input class="form-control" placeholder="Search...">
+
+                            <div class="input-group-btn">
+                                <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="box-footer" style="display: block;">
+
+    </div>
+</div>

@@ -1,4 +1,4 @@
-angular.module('frontend-module', ["frontend-module.dashboard", "frontend-module.advertisements"])
+angular.module('frontend-module', ["frontend-module.dashboard"])
     .config(['$stateProvider', function ($stateProvider) {
 
         $stateProvider.state('frontend', {

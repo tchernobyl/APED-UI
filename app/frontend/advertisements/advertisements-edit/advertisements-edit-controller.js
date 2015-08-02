@@ -7,31 +7,25 @@ angular.module('frontend-module.advertisements')
             controller: 'AdvertisementsEditController',
             authenticate: true,
             resolve: {
-                _version: [
-                    'VersionVersions', '$stateParams',
-                    function (VersionVersions, $stateParams) {
+                _announcement: [
+                    'ContentContents', '$stateParams',
+                    function (ContentContents, $stateParams) {
                         if ($stateParams.id) {
-                            return VersionVersions.one($stateParams.id).get();
+                            return ContentContents.one($stateParams.id).get();
                         } else {
-                            return {data: VersionVersions.one()};
+                            return {data: ContentContents.one()};
                         }
 
-                    }
-                ],
-                _brands: [
-                    'BrandBrands',
-                    function (BrandBrands) {
-                        return BrandBrands.getList();
                     }
                 ]
             }
         });
     }])
     .controller('AdvertisementsEditController',
-        ['$scope', '$modal', '$state', '$timeout', '_version', '_brands',
-            function ($scope, $modal, $state, $timeout, _version, _brands) {
-                $scope.version = _version.data;
-                $scope.brands = _brands.data;
+        ['$scope', '$modal', '$state', '$timeout', '_announcement',
+            function ($scope, $modal, $state, $timeout, _announcement) {
+
+                $scope.announcement = _announcement.data;
 
 
             }]);
