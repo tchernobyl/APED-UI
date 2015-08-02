@@ -17,15 +17,30 @@ angular.module('frontend-module.advertisements')
                         }
 
                     }
+                ],
+                _devicesList: [
+                    'DeviceDevices',
+                    function (DeviceDevices) {
+                        return  DeviceDevices.getList();
+                    }
                 ]
             }
         });
     }])
     .controller('AdvertisementsEditController',
-        ['$scope', '$modal', '$state', '$timeout', '_announcement',
-            function ($scope, $modal, $state, $timeout, _announcement) {
+        ['$scope', '$modal', '$state', '$timeout', '_announcement', '_devicesList',
+            function ($scope, $modal, $state, $timeout, _announcement, _devicesList) {
 
                 $scope.announcement = _announcement.data;
+                $scope.devicesList = _devicesList.data;
+                $scope.saveAnnouncement = function () {
+                    $scope.announcement.ownerId = 1;
+                    $scope.announcement.save().then(function () {
 
+                        $state.go("frontend.advertisements.list");
+                    }, function () {
+
+                    });
+                }
 
             }]);

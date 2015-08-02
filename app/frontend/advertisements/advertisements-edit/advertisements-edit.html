@@ -15,6 +15,21 @@
                     <div class="row">
                         <div class="col-sm-8">
                             <div class="form-group">
+                                <label>Device:</label>
+
+                                <select ui-select2 name="deviceId" ng-model="announcement.deviceId"
+                                        class="form-control">
+                                    <option value=""></option>
+                                    <option value="{{ device.id }}" ng-repeat="device in devicesList">{{
+                                        device.name }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
                                 <label>Name:</label>
                                 <input ng-model="announcement.name" class="form-control">
 

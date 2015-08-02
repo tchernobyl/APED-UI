@@ -17,17 +17,18 @@
         <div class="box-body chat" id="chat-box">
 
             <div class="item" ng-repeat="announcement in announcementsList">
-                <img src="dist/img/user4-128x128.jpg" alt="user image"
+                <img src="templates/images/announcement/announcement1.png" alt="user image"
                      ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
 
                 <p class="message">
-                    <a href="#" class="name">
+                    <a ui-sref="frontend.advertisements.view({id:announcement.id})" class="name">
                         <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{announcement.createdAt}}
                         </small>
                         {{announcement.name}}
 
                     </a>
-                    {{announcement.shortDescription}}<a>Read more ..</a>
+                    {{announcement.shortDescription}}<a ui-sref="frontend.advertisements.view({id:announcement.id})">Read
+                    more ..</a>
 
                 </p>
 
@@ -42,10 +43,15 @@
 
                     </p>
 
-                    <div class="pull-right">
-                        <small class="text-muted pull-right"><i class="fa fa-user"></i> hamdouni Ameur</small>
-                    </div>
+
                 </div>
+
+
+                <img src="templates/images/users/user2-128x128.png" alt="user image" class=" pull-right"
+                     ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
+                <small class="text-muted pull-right"><i class="fa fa-user"></i>
+                    hamdouni Ameur
+                </small>
 
             </div>
 

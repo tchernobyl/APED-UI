@@ -20,14 +20,15 @@
                              ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
 
                         <p class="message">
-                            <a href="#" class="name">
+                            <a ui-sref="frontend.advertisements.view({id:announcement.id})" class="name">
                                 <small class="text-muted pull-right"><i class="fa fa-clock-o"></i>
                                     {{announcement.createdAt}}
                                 </small>
                                 {{announcement.name}}
 
                             </a>
-                            {{announcement.shortDescription}}<a>Read more ..</a>
+                            {{announcement.shortDescription}}<a
+                                ui-sref="frontend.advertisements.view({id:announcement.id})">Read more ..</a>
 
                         </p>
 

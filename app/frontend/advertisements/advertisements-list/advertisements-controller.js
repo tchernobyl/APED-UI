@@ -16,7 +16,13 @@ angular.module('frontend-module.advertisements')
                 _announcementsList: [
                     'ContentContents',
                     function (ContentContents) {
-                        return ContentContents.getList();
+                        return ContentContents.getList(
+                            {
+                                'sort': '-updatedAt',
+                                'per-page': 10,
+                                page: 1
+                            }
+                        );
                     }
                 ]
             }
