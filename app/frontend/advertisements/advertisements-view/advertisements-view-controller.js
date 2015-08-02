@@ -11,7 +11,7 @@ angular.module('frontend-module.advertisements')
                     'ContentContents', '$stateParams', '$state',
                     function (ContentContents, $stateParams, $state) {
                         if ($stateParams.id) {
-                            return ContentContents.one($stateParams.id).get();
+                            return ContentContents.one($stateParams.id).get({expand: 'device,owner'});
                         } else {
                             $state._stop();
                             return false;
