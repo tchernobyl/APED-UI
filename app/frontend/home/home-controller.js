@@ -16,6 +16,12 @@ angular.module('frontend-module.home')
                     function (CategoryCategoriesFormatted) {
                         return CategoryCategoriesFormatted.getList();
                     }
+                ],
+                _topBrands: [
+                    'BrandBrands',
+                    function (BrandBrands) {
+                        return BrandBrands.getList();
+                    }
                 ]
             },
             templateUrl: 'frontend/home/home.html',
@@ -24,12 +30,13 @@ angular.module('frontend-module.home')
         });
     }])
     .controller('HomeFrontendController',
-        ['$scope', '$modal', '$timeout', '_announcementsList', '_topCategories',
-            function ($scope, $modal, $timeout, _announcementsList, _topCategories) {
+        ['$scope', '$modal', '$timeout', '_announcementsList', '_topCategories', '_topBrands',
+            function ($scope, $modal, $timeout, _announcementsList, _topCategories, _topBrands) {
 
 
                 $scope.announcementsList = _announcementsList.data;
                 $scope.topCategories = _topCategories.data;
+                $scope.topBrands = _topBrands.data;
 
 
             }]);

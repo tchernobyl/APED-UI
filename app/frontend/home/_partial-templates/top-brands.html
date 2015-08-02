@@ -1,0 +1,18 @@
+<ul class="timeline">
+    <li class="time-label">
+                  <span class="bg-aqua-gradient">
+                     Top Brands
+                  </span>
+    </li>
+    <li ng-repeat="topBrand in topBrands">
+        <i class="fa fa-folder bg-aqua"></i>
+
+        <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i>40</span>
+
+            <h3 class="timeline-header no-border"><a href="#">{{topBrand.name}}</a> {{topBrand.shortDescription}}
+            </h3>
+        </div>
+    </li>
+
+</ul>
