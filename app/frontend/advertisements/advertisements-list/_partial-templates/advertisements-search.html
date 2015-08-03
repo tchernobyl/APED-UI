@@ -12,12 +12,105 @@
 
     <div ng-if="!searchFilterDisabled" class="box-body" style="display: block;">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-12">
+                <form role="form">
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+
+
+                            <select ui-select2 name="categoryId" ng-model="search.categoryId"
+                                    class="form-control"
+                                    ng-click="updateBrands()"
+                                    placeholder="Search Categories">
+                                <option value=""></option>
+                                <option value="{{ category.id }}" ng-repeat="category in categoriesList">{{
+                                    category.name }}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+
+
+                            <select ui-select2 name="brandId" ng-model="search.brandId"
+
+                                    class="form-control"
+                                    ng-click="updateVersions()"
+                                    placeholder="Search Brands">
+                                <option value=""></option>
+                                <option value="{{ brand.id }}" ng-repeat="brand in brandsList"
+                                        >{{
+                                    brand.name }}
+                                </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+
+
+                            <select ui-select2 name="versionId" ng-model="search.versionId"
+
+                                    class="form-control"
+                                    ng-click="updateDevices()"
+                                    placeholder="Search Versions">
+                                <option value=""></option>
+                                <option value="{{ version.id }}" ng-repeat="version in versionsList"
+                                        >{{
+                                    version.version }}
+                                </option>
+
+                            </select>
+
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+
+
+                            <select ui-select2 name="deviceId" ng-model="search.deviceId"
+                                    class="form-control"
+                                    ng-click="selectSelect()"
+                                    placeholder="Search Device">
+                                <option value=""></option>
+                                <option value="{{ device.id }}" ng-repeat="device in devicesList">{{
+                                    device.name }}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                </form>
+
 
             </div>
-            <div class="col-md-6">
+            <div class="col-md-12">
+                <form role="form">
 
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <input ng-change="instantSearch(search.nameSearch)"
+                                       ng-model="search.nameSearch"
+                                       type="text" class="form-control"
+                                       placeholder="Search Announcement">
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+
         </div>
     </div>
     <div class="box-footer" style="display: block;">

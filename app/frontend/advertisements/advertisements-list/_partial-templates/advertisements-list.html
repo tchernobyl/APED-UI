@@ -15,6 +15,13 @@
             <div class="col-md-12">
                 <div class="box-body chat" id="chat-box">
 
+                    <ul class="pagination pagination-sm inline">
+                        <li><a href="#">«</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">»</a></li>
+                    </ul>
                     <div class="item" ng-repeat="announcement in announcementsList">
                         <img src="dist/img/user4-128x128.jpg" alt="user image"
                              ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
@@ -52,13 +59,7 @@
 
 
                     <div class="box-footer">
-                        <div class="input-group">
-                            <input class="form-control" placeholder="Search...">
 
-                            <div class="input-group-btn">
-                                <button class="btn btn-success"><i class="fa fa-plus"></i></button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -66,6 +67,12 @@
         </div>
     </div>
     <div class="box-footer" style="display: block;">
-
+        <ul class="pagination pagination-sm inline">
+            <li><a href="#">«</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">»</a></li>
+        </ul>
     </div>
 </div>
