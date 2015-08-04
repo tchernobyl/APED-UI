@@ -69,8 +69,8 @@ angular.module('frontend-module.advertisements')
     .controller('AdvertisementsController',
         ['$scope', '$modal', '$timeout', '_announcementsList',
             '_categoriesList', '$stateParams', '$state', '_devicesList',
-            'BrandBrands', 'VersionVersions', 'DeviceDevices', 'CategoryCategories', 'ContentContents', 'growl', 'ListControllerFactory'
-            , function ($scope, $modal, $timeout, _announcementsList, _categoriesList, $stateParams, $state, _devicesList, BrandBrands, VersionVersions, DeviceDevices, CategoryCategories, ContentContents, growl, ListControllerFactory) {
+            'BrandBrands', 'ProductProduct', 'DeviceDevices', 'CategoryCategories', 'ContentContents', 'growl', 'ListControllerFactory'
+            , function ($scope, $modal, $timeout, _announcementsList, _categoriesList, $stateParams, $state, _devicesList, BrandBrands, ProductProducts, DeviceDevices, CategoryCategories, ContentContents, growl, ListControllerFactory) {
 
 
             $scope.search = {};
@@ -104,17 +104,17 @@ angular.module('frontend-module.advertisements')
                     $scope.brandsList = result.data.brands
                 })
             };
-            $scope.updateVersions = function () {
+            $scope.updateProducts = function () {
 
-                BrandBrands.one($scope.search.brandId).get({expand: "versions"}).then(function (result) {
+                BrandBrands.one($scope.search.brandId).get({expand: "products"}).then(function (result) {
 
-                    $scope.versionsList = result.data.versions
+                    $scope.productsList = result.data.products
                 })
             };
 
             $scope.updateDevices = function () {
 
-                VersionVersions.one($scope.search.versionId).get({expand: "devices"}).then(function (result) {
+                ProductProducts.one($scope.search.productId).get({expand: "devices"}).then(function (result) {
                     $scope.devicesList = result.data.devices;
                 })
             };
@@ -153,9 +153,9 @@ angular.module('frontend-module.advertisements')
                 $scope.search.deviceId = null;
                 $scope.search.brandId = null;
                 $scope.search.categoryId = null;
-                $scope.search.versionId = null;
+                $scope.search.productId = null;
                 $scope.brandsList = [];
-                $scope.versionsList = [];
+                $scope.productsList = [];
                 $scope.devicesList = [];
                 $scope.instantSearch();
             };

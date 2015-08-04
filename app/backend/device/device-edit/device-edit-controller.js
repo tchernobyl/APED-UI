@@ -18,20 +18,20 @@ angular.module('backend-module.device')
 
                     }
                 ],
-                _versions: [
-                    'VersionVersions',
-                    function (VersionVersions) {
-                        return VersionVersions.getList();
+                _products: [
+                    '_products',
+                    function (ProductProduct) {
+                        return ProductProduct.getList();
                     }
                 ]
             }
         });
     }])
     .controller('DeviceEditController',
-        ['$scope', '$modal', '$state', '$timeout', '_device', '_versions',
-            function ($scope, $modal, $state, $timeout, _device, _versions) {
+        ['$scope', '$modal', '$state', '$timeout', '_device', '_products',
+            function ($scope, $modal, $state, $timeout, _device, _products) {
                 $scope.device = _device.data;
-                $scope.versions = _versions.data;
+                $scope.products = _products.data;
                 $scope.saveDevice = function () {
                     $scope.device.save().then(function () {
 
