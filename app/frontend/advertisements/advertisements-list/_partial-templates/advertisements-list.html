@@ -13,15 +13,29 @@
     <div ng-if="!listPanelDisabled" class="box-body" style="display: block;">
         <div class="row">
             <div class="col-md-12">
+
+                <div class="box-body chat" id="chat-pagination">
+                    <div class="pull-left">
+                        show [
+                        <a ng-click="setPerPage(2)">2</a>
+                        /
+                        <a ng-click="setPerPage(4)">4</a>
+                        /
+                        <a ng-click="setPerPage(6)">6</a>
+                        /
+                        <a ng-click="setPerPage(12)">12</a>
+                        ]
+                        per page
+                    </div>
+                    <pagination ng-model="search.currentPage" ng-change="pageChanged()" total-items="search.totalItems"
+                                items-per-page="search.itemsPerPage"
+                                max-size="search.maxPageSize" boundary-links="search.displayPageBoundaryLinks"
+                                class="pull-right"></pagination>
+
+                </div>
                 <div class="box-body chat" id="chat-box">
 
-                    <ul class="pagination pagination-sm inline">
-                        <li><a href="#">«</a></li>
-                        <li><a href="#">1</a></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">»</a></li>
-                    </ul>
+
                     <div class="item" ng-repeat="announcement in announcementsList">
                         <img src="dist/img/user4-128x128.jpg" alt="user image"
                              ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
@@ -67,12 +81,22 @@
         </div>
     </div>
     <div class="box-footer" style="display: block;">
-        <ul class="pagination pagination-sm inline">
-            <li><a href="#">«</a></li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">»</a></li>
-        </ul>
+
+        <div class="pull-left">
+            show [
+            <a ng-click="setPerPage(2)">2</a>
+            /
+            <a ng-click="setPerPage(4)">4</a>
+            /
+            <a ng-click="setPerPage(6)">6</a>
+            /
+            <a ng-click="setPerPage(12)">12</a>
+            ]
+            per page
+        </div>
+        <pagination ng-model="search.currentPage" ng-change="pageChanged()" total-items="search.totalItems"
+                    items-per-page="search.itemsPerPage"
+                    max-size="search.maxPageSize" boundary-links="search.displayPageBoundaryLinks"
+                    class="pull-right"></pagination>
     </div>
 </div>

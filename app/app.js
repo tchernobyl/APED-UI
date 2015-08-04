@@ -14,6 +14,7 @@ angular.module('sbAdminApp', [
 
 
         //components
+        , 'controller-factory'
         , 'device-devices'
         , 'version-versions'
         , 'brand-brands'
@@ -36,6 +37,11 @@ angular.module('sbAdminApp', [
         , 'frontend-module.advertisements'
 
 
+    ])
+    .config([
+        'growlProvider', function (growlProvider) {
+            growlProvider.globalTimeToLive(3000);
+        }
     ])
     .config([
         'RestangularProvider',
