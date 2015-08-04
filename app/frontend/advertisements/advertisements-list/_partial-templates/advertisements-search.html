@@ -3,8 +3,11 @@
         <h3 class="box-title">Search</h3>
 
         <div class="box-tools pull-right">
+            <button ng-click="clearSearchFields()" class="btn btn-box-tool"
+                    data-widget="collapse"><i class="fa fa- fa-refresh"></i></button>
             <button ng-show="!searchFilterDisabled" ng-click="searchFilterDisabled=true" class="btn btn-box-tool"
                     data-widget="collapse"><i class="fa fa-minus"></i></button>
+
             <button ng-show="searchFilterDisabled" ng-click="searchFilterDisabled=false" class="btn btn-box-tool"
                     data-widget="remove"><i class="glyphicon glyphicon-new-window"></i></button>
         </div>
@@ -14,6 +17,19 @@
         <div class="row">
             <div class="col-md-12">
                 <form role="form">
+
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <input ng-change="instantSearch(search.nameSearch)"
+                                       ng-model="search.nameSearch"
+                                       type="text" class="form-control"
+                                       placeholder="Search Announcement">
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="col-sm-3">
                         <div class="form-group">
@@ -32,7 +48,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" ng-if="brandsList">
                         <div class="form-group">
 
 
@@ -52,7 +68,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" ng-if="versionsList">
                         <div class="form-group">
 
 
@@ -72,13 +88,13 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-3">
+                    <div class="col-sm-3" ng-if="devicesList">
                         <div class="form-group">
 
 
                             <select ui-select2 name="deviceId" ng-model="search.deviceId"
                                     class="form-control"
-                                    ng-click="selectSelect()"
+                                    ng-click="updateContent()"
                                     placeholder="Search Device">
                                 <option value=""></option>
                                 <option value="{{ device.id }}" ng-repeat="device in devicesList">{{
@@ -97,17 +113,6 @@
             <div class="col-md-12">
                 <form role="form">
 
-                    <div class="col-sm-3">
-                        <div class="form-group">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                                <input ng-change="instantSearch(search.nameSearch)"
-                                       ng-model="search.nameSearch"
-                                       type="text" class="form-control"
-                                       placeholder="Search Announcement">
-                            </div>
-                        </div>
-                    </div>
                 </form>
             </div>
 

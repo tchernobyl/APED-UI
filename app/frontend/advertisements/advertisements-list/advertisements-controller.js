@@ -12,7 +12,7 @@ angular.module('frontend-module.advertisements')
                     'ContentContents', '$stateParams',
                     function (ContentContents, $stateParams) {
                         var page = $stateParams.page ? $stateParams.page : 1;
-                        var perPage = $stateParams.perPage ? $stateParams.perPage : 10;
+                        var perPage = $stateParams.perPage ? $stateParams.perPage : 3;
 
                         var FiltersInstantSearch = {
                             'sort': '-updatedAt',
@@ -69,16 +69,34 @@ angular.module('frontend-module.advertisements')
     .controller('AdvertisementsController',
         ['$scope', '$modal', '$timeout', '_announcementsList',
             '_categoriesList', '$stateParams', '$state', '_devicesList',
-            'BrandBrands', 'VersionVersions', 'DeviceDevices', 'CategoryCategories'
-            , function ($scope, $modal, $timeout, _announcementsList, _categoriesList, $stateParams, $state, _devicesList, BrandBrands, VersionVersions, DeviceDevices, CategoryCategories) {
+            'BrandBrands', 'VersionVersions', 'DeviceDevices', 'CategoryCategories', 'ContentContents', 'growl', 'ListControllerFactory'
+            , function ($scope, $modal, $timeout, _announcementsList, _categoriesList, $stateParams, $state, _devicesList, BrandBrands, VersionVersions, DeviceDevices, CategoryCategories, ContentContents, growl, ListControllerFactory) {
+
+
+            $scope.search = {};
+            $scope.announcementsList = _announcementsList.data;
+            $scope.search.totalItems = _announcementsList.headers('x-pagination-total-count');
+            $scope.search.currentPage = _announcementsList.headers('x-pagination-current-page');
+            $scope.search.itemsPerPage = _announcementsList.headers('x-pagination-per-page');
+            $scope.search.maxPageSize = 3;
+
+
             $scope.brandsList = [];
             $scope.categoriesList = _categoriesList.data;
-            $scope.announcementsList = _announcementsList.data;
-            $scope.devicesList = _devicesList.data;
-            $scope.search = {};
-            $scope.search.page = $stateParams.page ? $stateParams.page : 1;
-            $scope.search.perPage = $stateParams.perPage ? $stateParams.perPage : 10;
 
+            $scope.devicesList = [];
+            $scope.setPerPage = function (perPage) {
+                $scope.search.itemsPerPage = perPage;
+                goToAdvertisementsList();
+
+            };
+            $scope.pageChanged = function () {
+
+                goToAdvertisementsList()
+            };
+
+
+            growl.addSuccessMessage("ddd" + ' has been cloned successfully.');
             $scope.updateBrands = function () {
 
                 CategoryCategories.one($scope.search.categoryId).get({expand: "brands"}).then(function (result) {
@@ -100,6 +118,10 @@ angular.module('frontend-module.advertisements')
                     $scope.devicesList = result.data.devices;
                 })
             };
+            $scope.updateContent = function () {
+
+                goToAdvertisementsList();
+            };
             if ($stateParams.nameSearch) {
                 $scope.search.nameSearch = $stateParams.nameSearch;
             } else {
@@ -115,46 +137,73 @@ angular.module('frontend-module.advertisements')
 
                 setTimeout(function () {
 
-                    if ((tmpStr == $scope.search.nameSearch) || (tmpStr == null) || (tmpStr == '')) {
+                    if ((tmpStr == $scope.search.nameSearch)) {
                         $scope.search.nameSearch = tmpStr;
                         goToAdvertisementsList();
                     }
 
-                }, 750);
+                }, 250);
             };
             $scope.selectSelect = function () {
 
                 goToAdvertisementsList();
             };
+            $scope.clearSearchFields = function () {
+                $scope.search.nameSearch = null;
+                $scope.search.deviceId = null;
+                $scope.search.brandId = null;
+                $scope.search.categoryId = null;
+                $scope.search.versionId = null;
+                $scope.brandsList = [];
+                $scope.versionsList = [];
+                $scope.devicesList = [];
+                $scope.instantSearch();
+            };
             function goToAdvertisementsList() {
-                var filter = {};
-                if ($scope.search.perPage) {
-                    filter = $.extend(filter,
-                        {
-                            perPage: $scope.search.perPage,
-                            nameSearch: $scope.search.nameSearch
-                        }
-                    );
-                }
+                var page = $scope.search.currentPage;
+                var perPage = $scope.search.itemsPerPage;
 
+                var FiltersInstantSearch = {
+                    'sort': '-updatedAt',
+                    expand: 'user,items,context',
+                    'per-page': perPage,
+                    page: page
+                };
                 if ($scope.search.deviceId) {
-                    filter = $.extend(filter,
+
+
+                    FiltersInstantSearch = $.extend(FiltersInstantSearch,
                         {
-                            deviceId: $scope.search.deviceId
+                            'query[1][type]': "eq",
+                            'query[1][field]': "deviceId",
+                            'query[1][value]': $scope.search.deviceId
                         }
                     );
-
                 }
-                if ($scope.search.page) {
-                    filter = $.extend(filter,
+                if ($scope.search.nameSearch) {
+
+
+                    FiltersInstantSearch = $.extend(FiltersInstantSearch,
                         {
-                            page: $scope.search.page
+                            'query[2][type]': "like",
+                            'query[2][field]': "name",
+                            'query[2][value]': $scope.search.nameSearch
                         }
                     );
-
                 }
 
-                $state.go(".", filter);
+                ContentContents.getList(
+                        FiltersInstantSearch
+                    ).then(function (result) {
+                        $scope.announcementsList = result.data;
+                        $scope.announcementsList = result.data;
+                        $scope.search.totalItems = result.headers('x-pagination-total-count');
+                        $scope.search.currentPage = result.headers('x-pagination-current-page');
+                        $scope.search.itemsPerPage = result.headers('x-pagination-per-page');
+                        $scope.displayPageBoundaryLinks = Math.ceil($scope.search.totalItems / $scope.search.itemsPerPage) > $scope.search.maxPageSize;
+
+                    });
+
             }
 
 
