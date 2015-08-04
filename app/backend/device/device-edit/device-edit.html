@@ -38,13 +38,13 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <label>Version:</label>
+                                        <label>Product:</label>
 
-                                        <select ui-select2 name="versionId" ng-model="device.versionId"
+                                        <select ui-select2 name="productId" ng-model="device.productId"
                                                 class="form-control">
                                             <option value=""></option>
-                                            <option value="{{ version.id }}" ng-repeat="version in versions">{{
-                                                version.version }}
+                                            <option value="{{ product.id }}" ng-repeat="product in products">{{
+                                                product.product }}
                                             </option>
                                         </select>
                                     </div>

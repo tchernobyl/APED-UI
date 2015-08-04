@@ -10,7 +10,7 @@ angular.module('backend-module.device')
                 _devices: [
                     'DeviceDevices', '$stateParams',
                     function (DeviceDevices, $stateParams) {
-                        return DeviceDevices.getList({expand: "version"});
+                        return DeviceDevices.getList({expand: "product"});
                     }
                 ]
             }

@@ -16,7 +16,7 @@ angular.module('sbAdminApp', [
         //components
         , 'controller-factory'
         , 'device-devices'
-        , 'version-versions'
+        , 'product-products'
         , 'brand-brands'
         , 'category-categories'
         , 'content-contents'
@@ -26,7 +26,7 @@ angular.module('sbAdminApp', [
         , 'backend-module'
         , 'backend-module.dashboard2'
         , 'backend-module.device'
-        , 'backend-module.version'
+        , 'backend-module.product'
         , 'backend-module.brand'
         , 'backend-module.category'
 

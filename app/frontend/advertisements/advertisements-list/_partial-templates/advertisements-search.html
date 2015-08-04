@@ -55,7 +55,7 @@
                             <select ui-select2 name="brandId" ng-model="search.brandId"
 
                                     class="form-control"
-                                    ng-click="updateVersions()"
+                                    ng-click="updateProducts()"
                                     placeholder="Search Brands">
                                 <option value=""></option>
                                 <option value="{{ brand.id }}" ng-repeat="brand in brandsList"
@@ -68,19 +68,19 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-3" ng-if="versionsList">
+                    <div class="col-sm-3" ng-if="productsList">
                         <div class="form-group">
 
 
-                            <select ui-select2 name="versionId" ng-model="search.versionId"
+                            <select ui-select2 name="productId" ng-model="search.productId"
 
                                     class="form-control"
                                     ng-click="updateDevices()"
-                                    placeholder="Search Versions">
+                                    placeholder="Search Products">
                                 <option value=""></option>
-                                <option value="{{ version.id }}" ng-repeat="version in versionsList"
+                                <option value="{{ product.id }}" ng-repeat="product in productsList"
                                         >{{
-                                    version.version }}
+                                    product.product }}
                                 </option>
 
                             </select>

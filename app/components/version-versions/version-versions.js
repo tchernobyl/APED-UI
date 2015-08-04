@@ -1,1 +1,0 @@
-angular.module('version-versions', []);
