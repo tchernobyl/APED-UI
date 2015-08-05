@@ -19,9 +19,9 @@ angular.module('backend-module.device')
                     }
                 ],
                 _products: [
-                    '_products',
-                    function (ProductProduct) {
-                        return ProductProduct.getList();
+                    'ProductProducts',
+                    function (ProductProducts) {
+                        return ProductProducts.getList();
                     }
                 ]
             }
