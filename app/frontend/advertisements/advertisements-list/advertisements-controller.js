@@ -69,7 +69,7 @@ angular.module('frontend-module.advertisements')
     .controller('AdvertisementsController',
         ['$scope', '$modal', '$timeout', '_announcementsList',
             '_categoriesList', '$stateParams', '$state', '_devicesList',
-            'BrandBrands', 'ProductProduct', 'DeviceDevices', 'CategoryCategories', 'ContentContents', 'growl', 'ListControllerFactory'
+            'BrandBrands', 'ProductProducts', 'DeviceDevices', 'CategoryCategories', 'ContentContents', 'growl', 'ListControllerFactory'
             , function ($scope, $modal, $timeout, _announcementsList, _categoriesList, $stateParams, $state, _devicesList, BrandBrands, ProductProducts, DeviceDevices, CategoryCategories, ContentContents, growl, ListControllerFactory) {
 
 

@@ -11,9 +11,9 @@ angular.module('backend-module.product')
                     'ProductProducts', '$stateParams',
                     function (ProductProducts, $stateParams) {
                         if ($stateParams.id) {
-                            return ProductProducts.one($stateParams.id).get();
+                            return ProductProducts.one($stateParams.id).get({expand: "brands"});
                         } else {
-                            return {data: ProductProducts.one()};
+                            return {data: ProductProducts.one({expand: "brands"})};
                         }
 
                     }
@@ -21,7 +21,7 @@ angular.module('backend-module.product')
                 _brands: [
                     'BrandBrands',
                     function (BrandBrands) {
-                        return BrandBrands.getList();
+                        return BrandBrands.getList({expand: "brands"});
                     }
                 ]
             }
@@ -30,8 +30,41 @@ angular.module('backend-module.product')
     .controller('ProductEditController',
         ['$scope', '$modal', '$state', '$timeout', '_product', '_brands',
             function ($scope, $modal, $state, $timeout, _product, _brands) {
+                $scope.productSetup = {
+                    multiple: true,
+                    formatSearching: 'Searching the product...',
+                    formatNoMatches: 'No product found'
+                };
+
+
                 $scope.product = _product.data;
                 $scope.brands = _brands.data;
+                $scope.AddBrands = {
+
+                    open: function (brands, $index) {
+                        var brands_list = angular.copy($scope.product.brands);
+
+                        var addBrands = $modal.open({
+                            templateUrl: 'components/brand-brands/select-brands/select-brands.html',
+                            controller: 'SelectBrandsModalController',
+                            resolve: {
+                                _oldBrands: function () {
+                                    return brands_list;
+                                },
+                                _brands: function () {
+                                    return $scope.brands;
+                                }
+                            }
+                        });
+                        addBrands.result.then(function (result) {
+
+                            $scope.product.brands = result;
+                        }, function () {
+
+
+                        });
+                    }
+                };
                 $scope.saveProduct = function () {
                     $scope.product.save().then(function () {
 

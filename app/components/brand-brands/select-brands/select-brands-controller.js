@@ -1,50 +1,50 @@
 angular.module('brand-brands')
 
     .controller('SelectBrandsModalController',
-        ['$scope', '$modalInstance', '_brands', '_categoryBrands',
-            function ($scope, $modalInstance, _brands, _categoryBrands) {
+        ['$scope', '$modalInstance', '_brands', '_oldBrands',
+            function ($scope, $modalInstance, _brands, _oldBrands) {
 
-                var DefaultBrandCategories = angular.copy(_categoryBrands);
-                var DefaultCategories = angular.copy(_brands);
+                var DefaultBrandObjects = angular.copy(_oldBrands);
+                var DefaultObjects = angular.copy(_brands);
 
-                for (var cat = 0; cat < DefaultBrandCategories.length; cat++) {
-                    var objectCat = DefaultBrandCategories[cat];
-                    var indexCat = _.findIndex(DefaultCategories, {id: objectCat.id });
+                for (var cat = 0; cat < DefaultBrandObjects.length; cat++) {
+                    var objectCat = DefaultBrandObjects[cat];
+                    var indexCat = _.findIndex(DefaultObjects, {id: objectCat.id });
 
                     if (indexCat > -1) {
-                        DefaultCategories.splice(indexCat, 1);
+                        DefaultObjects.splice(indexCat, 1);
                     }
                 }
 
 
-                $scope.categoryBrands = angular.copy(DefaultBrandCategories);
-                $scope.brands = angular.copy(DefaultCategories);
+                $scope.oldBrands = angular.copy(DefaultBrandObjects);
+                $scope.brands = angular.copy(DefaultObjects);
 
 
                 $scope.resetDefault = function () {
 
-                    $scope.categoryBrands = angular.copy(DefaultBrandCategories);
-                    $scope.brands = angular.copy(DefaultCategories);
+                    $scope.oldBrands = angular.copy(DefaultBrandObjects);
+                    $scope.brands = angular.copy(DefaultObjects);
                 };
 
-                $scope.selectCategory = function (brand) {
-                    var index = _.findIndex($scope.categoryBrands, {id: brand.id });
+                $scope.selectObject = function (brand) {
+                    var index = _.findIndex($scope.oldBrands, {id: brand.id });
                     if (index < 0) {
-                        $scope.categoryBrands.push(brand)
+                        $scope.oldBrands.push(brand)
 
                         var index_cate = _.findIndex($scope.brands, {id: brand.id });
                         $scope.brands.splice(index_cate, 1);
                     }
                 };
-                $scope.deleteCategory = function (brand) {
-                    console.log(brand)
-                    var index = _.findIndex($scope.categoryBrands, {id: brand.id });
-                    $scope.categoryBrands.splice(index, 1);
+                $scope.deleteObject = function (brand) {
+
+                    var index = _.findIndex($scope.oldBrands, {id: brand.id });
+                    $scope.oldBrands.splice(index, 1);
                     $scope.brands.push(brand);
                 };
-                $scope.closeAndReturnCategories = function () {
+                $scope.closeAndReturnBrands = function () {
 
-                    $modalInstance.close($scope.categoryBrands);
+                    $modalInstance.close($scope.oldBrands);
                 };
                 $scope.close = function () {
                     $modalInstance.dismiss('cancel');

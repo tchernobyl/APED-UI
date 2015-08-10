@@ -9,19 +9,19 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div style="cursor:  pointer;"
-                         ng-click="deleteObject(brand)"
+                         ng-click="deleteObject(object)"
                          class="alert alert-success"
-                         ng-repeat="brand in oldBrands">
-                        <a>{{brand.type}}</a>
+                         ng-repeat="object in listOldObjects">
+                        <a>{{object.product}}</a>
 
                     </div>
                 </div>
                 <div class="col-sm-6">
                     <div style="cursor:  pointer;"
-                         ng-click="selectObject(brand)"
+                         ng-click="selectObject(object)"
                          class="alert alert-info"
-                         ng-repeat="brand in brands">
-                        <a>{{brand.type}}</a>
+                         ng-repeat="object in listAllObjects">
+                        <a>{{object.product}}</a>
 
                     </div>
                 </div>
@@ -32,6 +32,6 @@
     </div>
     <div class="modal-footer">
         <button type="button" ng-click="resetDefault()" class="btn btn-default">Reset</button>
-        <button type="button" class="btn btn-primary" ng-click="closeAndReturnBrands()">Save changes</button>
+        <button type="button" class="btn btn-primary" ng-click="closeAndReturnObjects()">Save changes</button>
     </div>
 </div>
