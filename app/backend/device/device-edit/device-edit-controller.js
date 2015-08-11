@@ -25,14 +25,28 @@ angular.module('backend-module.device')
                     function (ProductProducts) {
                         return ProductProducts.getList();
                     }
+                ],
+                _categories: [
+                    'CategoryCategories',
+                    function (CategoryCategories) {
+                        return CategoryCategories.getList();
+                    }
+                ],
+                _brands: [
+                    'BrandBrands',
+                    function (BrandBrands) {
+                        return BrandBrands.getList();
+                    }
                 ]
             }
         });
     }])
     .controller('DeviceEditController',
-        ['$scope', '$modal', '$state', '$timeout', '_device', '_products',
-            function ($scope, $modal, $state, $timeout, _device, _products) {
+        ['$scope', '$modal', '$state', '$timeout', '_device', '_products', '_categories', '_brands',
+            function ($scope, $modal, $state, $timeout, _device, _products, _categories, _brands) {
                 $scope.device = _device.data;
+                $scope.brands = _brands.data;
+                $scope.categories = _categories.data;
                 $scope.products = _products.data;
                 $scope.saveDevice = function () {
                     $scope.device.save().then(function () {

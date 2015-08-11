@@ -1,4 +1,7 @@
-<div class="box box-default">
+<div ng-include="'frontend/advertisements/advertisements-edit/_partial-templates/device_details.html'"></div>
+
+
+<div class="col-sm-8 box box-default">
     <div class="box-header with-border">
         <h3 class="box-title">Advertise</h3>
 
@@ -10,7 +13,7 @@
     <div class="box-body" style="display: block;">
 
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-12">
                 <form role="form">
                     <div class="row">
                         <div class="col-sm-8">
@@ -18,6 +21,7 @@
                                 <label>Device:</label>
 
                                 <select ui-select2 name="deviceId" ng-model="announcement.deviceId"
+                                        data-ng-click="changeDeviceObject()"
                                         class="form-control">
                                     <option value=""></option>
                                     <option value="{{ device.id }}" ng-repeat="device in devicesList">{{
@@ -32,6 +36,15 @@
                             <div class="form-group">
                                 <label>Name:</label>
                                 <input ng-model="announcement.name" class="form-control">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <div class="form-group">
+                                <label>Price:</label>
+                                <input ng-model="announcement.price" class="form-control">
 
                             </div>
                         </div>
@@ -60,21 +73,6 @@
 
                 </form>
             </div>
-            <div class="col-sm-4">
-                <form role="form">
-
-                    <div class="row">
-                        <div class="col-sm-8">
-                            <div class="form-group">
-                                <label>Price:</label>
-                                <input ng-model="announcement.price" class="form-control">
-
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
 
 
         </div>
@@ -83,5 +81,77 @@
     <div class="box-footer" style="display: block;">
         <button type="submit" class="btn btn-success" data-ng-click="saveAnnouncement()">Save</button>
         <button type="reset" class="btn btn-default">Cancel</button>
+    </div>
+</div>
+<div class="col-sm-4">
+    <div class="box box-success">
+        <div class="box-header with-border">
+            <h3 class="box-title"> {{announcement.device.name}}</h3>
+
+            <div class="box-tools pull-right">
+
+                <small class="label label-info"><i class="fa fa-clock-o"></i> {{announcement.device.type}}
+                </small>
+            </div>
+        </div>
+
+        <div class="box-body" style="display: block;">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <ul class="todo-list">
+                        <li>
+                                        <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                            <span class="text">weight:</span>
+                            <span class="text pull-right"> {{announcement.device.weight}}</span>
+                        </li>
+                        <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                            <span class="">width:</span>
+                            <span class="text pull-right"> {{announcement.device.width}}</span>
+                        </li>
+                        <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                            <span class="">height:</span>
+                            <span class="text pull-right"> {{announcement.device.height}}</span>
+                        </li>
+                        <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                            <span class="">depth:</span>
+                            <span class="text pull-right"> {{announcement.device.depth}}</span>
+                        </li>
+                        <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                            <span class="">price:</span>
+                            <span class="text pull-right"> {{announcement.device.price}}</span>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="box-footer" style="display: block;">
+
+            <button type="reset" class="btn btn-default">Return</button>
+
+        </div>
     </div>
 </div>

@@ -13,7 +13,9 @@ angular.module('backend-module.product')
                         if ($stateParams.id) {
                             return ProductProducts.one($stateParams.id).get({expand: "brands"});
                         } else {
-                            return {data: ProductProducts.one({expand: "brands"})};
+                            var product = {data: ProductProducts.one()};
+                            product.data.brands = [];
+                            return product;
                         }
 
                     }
