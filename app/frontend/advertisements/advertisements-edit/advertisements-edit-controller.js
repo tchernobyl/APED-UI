@@ -11,9 +11,11 @@ angular.module('frontend-module.advertisements')
                     'ContentContents', '$stateParams',
                     function (ContentContents, $stateParams) {
                         if ($stateParams.id) {
-                            return ContentContents.one($stateParams.id).get();
+                            return ContentContents.one($stateParams.id).get({expand: "device"});
                         } else {
-                            return {data: ContentContents.one()};
+                            var announcement = {data: ContentContents.one()};
+                            announcement.data.device = {};
+                            return announcement;
                         }
 
                     }
@@ -33,6 +35,13 @@ angular.module('frontend-module.advertisements')
 
                 $scope.announcement = _announcement.data;
                 $scope.devicesList = _devicesList.data;
+
+                $scope.changeDeviceObject = function () {
+                    var index = _.findIndex($scope.devicesList, {id: Number($scope.announcement.deviceId)  });
+                    console.log($scope.announcement.deviceId, index);
+                    $scope.announcement.device = $scope.devicesList[index];
+
+                };
                 $scope.saveAnnouncement = function () {
                     $scope.announcement.ownerId = 1;
                     $scope.announcement.save().then(function () {

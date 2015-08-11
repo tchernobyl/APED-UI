@@ -11,7 +11,72 @@
     <div class="col-lg-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                Basic Form Elements
+                Device Details
+            </div>
+            <div class="panel-body">
+                <div class="col-sm-4">
+                    <form role="form">
+
+
+                        <div class="form-group">
+                            <label>Category: </label>
+
+                            <select ui-select2 ng-model="device.deviceCategoryId" class="form-control">
+                                <option value="null"
+                                        >
+                                </option>
+                                <option value="{{ category.id }}"
+                                        ng-repeat="category in categories">{{ category.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="col-sm-4">
+                    <form role="form">
+                        <div class="form-group">
+                            <label>Brand: </label>
+
+                            <select ui-select2 ng-model="device.deviceBrandId" class="form-control">
+
+                                <option value="{{ brand.id }}"
+                                        ng-repeat="brand in brands">{{ brand.name }}
+                                </option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="col-sm-4">
+                    <form role="form">
+
+
+                        <div class="form-group">
+                            <label>Product: </label>
+
+                            <select ui-select2 ng-model="device.deviceProductId" class="form-control">
+                                <option value="null"
+                                        >
+                                </option>
+                                <option value="{{ product.id }}"
+                                        ng-repeat="product in products">{{ product.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                Device Details
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -35,21 +100,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-sm-8">
-                                    <div class="form-group">
-                                        <label>Product:</label>
 
-                                        <select ui-select2 name="productId" ng-model="device.productId"
-                                                class="form-control">
-                                            <option value=""></option>
-                                            <option value="{{ product.id }}" ng-repeat="product in products">{{
-                                                product.product }}
-                                            </option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="row">
                                 <div class="col-sm-11">
                                     <div class="form-group">
@@ -75,6 +126,38 @@
                     </div>
                     <div class="col-sm-4">
                         <form role="form">
+
+                            <div class="row">
+                                <div class="col-sm-12">
+
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><i class="fa fa-folder fa-fw"></i>
+                                            <label>
+
+                                                Add Products
+                                                <a ng-click="AddProducts.open()">
+                                                    +
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="list-group">
+                                                <a ng-repeat="product in device.products "
+                                                   class="list-group-item">
+                                                    {{product.product}}
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
 
                             <div class="row">
                                 <div class="col-sm-8">

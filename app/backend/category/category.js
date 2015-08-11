@@ -41,7 +41,7 @@ angular.module('backend-module.category', [])
                 if ($stateParams.list) {
 
                     $scope.listCategoriesExpanded = JSON.parse("[" + $stateParams.list + "]");
-                    ;
+
                 }
 
                 $scope.idCategory = $stateParams.list;

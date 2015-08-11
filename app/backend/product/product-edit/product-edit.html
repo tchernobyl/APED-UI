@@ -30,14 +30,10 @@
                             <div class="row">
                                 <div class="col-sm-8">
                                     <div class="form-group">
-                                        <label>Brand:</label>
+                                        <label>Name:</label>
+                                        <input ng-model="product.name" class="form-control">
 
-                                        <select ui-select2 ng-model="product.brandId" class="form-control">
-                                            <option value=""></option>
-                                            <option value="{{ brand.id }}" ng-repeat="brand in brands">{{ brand.type
-                                                }}
-                                            </option>
-                                        </select>
+                                        <p class="help-block">the name must be unique .</p>
                                     </div>
                                 </div>
                             </div>
@@ -67,7 +63,36 @@
                     <div class="col-sm-4">
                         <form role="form">
 
+                            <div class="row">
+                                <div class="col-sm-12">
 
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><i class="fa fa-folder fa-fw"></i>
+                                            <label>
+
+                                                Add Brands
+                                                <a ng-click="AddBrands.open()">
+                                                    +
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="list-group">
+                                                <a ng-repeat="brand in product.brands "
+                                                   ui-sref="backend.brand.edit({id:brand.id})" class="list-group-item">
+                                                    {{brand.type}}
+                                                </a>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
                         </form>
                     </div>
                     <div class="col-sm-12">

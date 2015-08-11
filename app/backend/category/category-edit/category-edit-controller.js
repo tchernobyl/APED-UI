@@ -64,7 +64,7 @@ angular.module('backend-module.category')
                             templateUrl: 'components/brand-brands/select-brands/select-brands.html',
                             controller: 'SelectBrandsModalController',
                             resolve: {
-                                _categoryBrands: function () {
+                                _oldBrands: function () {
                                     return brands_list;
                                 },
                                 _brands: function () {
