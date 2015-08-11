@@ -49,6 +49,9 @@ angular.module('backend-module.device')
                 $scope.categories = _categories.data;
                 $scope.products = _products.data;
                 $scope.saveDevice = function () {
+                    delete $scope.device.product;
+                    delete $scope.device.brand;
+                    delete $scope.device.categoryId;
                     $scope.device.save().then(function () {
 
                         $state.go("backend.device.list");

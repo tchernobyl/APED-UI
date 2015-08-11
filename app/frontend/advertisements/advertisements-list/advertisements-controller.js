@@ -195,7 +195,7 @@ angular.module('frontend-module.advertisements')
                 ContentContents.getList(
                         FiltersInstantSearch
                     ).then(function (result) {
-                        $scope.announcementsList = result.data;
+
                         $scope.announcementsList = result.data;
                         $scope.search.totalItems = result.headers('x-pagination-total-count');
                         $scope.search.currentPage = result.headers('x-pagination-current-page');
