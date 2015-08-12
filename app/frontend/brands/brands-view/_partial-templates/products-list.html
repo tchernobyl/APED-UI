@@ -1,0 +1,42 @@
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title"> {{brand.name}} products</h3>
+
+        <div class="box-tools pull-right">
+
+            <small class="label label-info"><i class="fa fa-clock-o"></i> {{brand.products.length}}
+            </small>
+        </div>
+    </div>
+
+    <div class="box-body" style="display: block;">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <ul class="todo-list">
+                    <li ng-repeat="product in brand.products">
+                                        <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="text">{{product.name}}</span>
+                                <span class="text pull-right">
+                                <small class="label label-info"><i class="fa fa-clock-o"></i> 35 announcement
+                                </small></span>
+                    </li>
+
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="box-footer" style="display: block;">
+
+        <button type="reset" class="btn btn-default">Return</button>
+
+    </div>
+</div>
