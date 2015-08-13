@@ -1,0 +1,64 @@
+<div class="box box-success">
+    <div class="box-header ui-sortable-handle">
+        <i class="glyphicon glyphicon-th-list"></i>
+
+        <h5 class="box-title"><a ui-sref="frontend.advertisements.list({deviceId:device.id})">
+            <p>All <span class="text-red"> {{device.name |cut:true:10:'..'}}</span> Announcements</p>
+        </a></h5>
+
+
+    </div>
+    <div>
+        <div class="box-body chat" id="chat-box">
+
+            <div class="item" ng-repeat="announcement in announcementsSuggested">
+                <img src="templates/images/announcement/announcement1.png" alt="user image"
+                     ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
+
+                <p class="message">
+                    <a ui-sref="frontend.advertisements.view({id:announcement.id})" class="name">
+                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{announcement.createdAt}}
+                        </small>
+                        {{announcement.name}}
+
+                    </a>
+
+
+                </p>
+
+                <div class="attachment">
+                    <h4>Attachments:</h4>
+
+                    <p class="filename">
+                        Price :{{announcement.price}}
+                    </p>
+
+                    <p class="filename">
+
+                    </p>
+
+
+                </div>
+
+
+                <img src="templates/images/users/user2-128x128.png" alt="user image" class=" pull-right"
+                     ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
+                <small class="text-muted pull-right"><i class="fa fa-user"></i>
+                    hamdouni Ameur
+                </small>
+
+            </div>
+
+
+            <div class="box-footer">
+                <div class="input-group">
+                    <input class="form-control" placeholder="Search...">
+
+                    <div class="input-group-btn">
+                        <button class="btn btn-success"><i class="fa fa-plus"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

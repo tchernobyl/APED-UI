@@ -18,6 +18,28 @@ angular.module('frontend-module.devices')
                         }
 
                     }
+                ],
+                _announcementsSuggested: [
+                    'ContentContents', '$stateParams', '$state',
+                    function (ContentContents, $stateParams, $state) {
+                        if ($stateParams.id) {
+                            return ContentContents.getList(
+                                {
+                                    'sort': '-updatedAt',
+                                    expand: '',
+                                    'per-page': 6,
+                                    page: 1,
+                                    'query[2][type]': "eq",
+                                    'query[2][field]': "device_id",
+                                    'query[2][value]': $stateParams.id
+                                }
+                            );
+                        } else {
+                            $state._stop();
+                            return false;
+                        }
+
+                    }
                 ]
 
 
@@ -25,10 +47,11 @@ angular.module('frontend-module.devices')
         });
     }])
     .controller('DevicesViewController',
-        ['$scope', '$modal', '$state', '$timeout', '_device',
-            function ($scope, $modal, $state, $timeout, _device) {
+        ['$scope', '$modal', '$state', '$timeout', '_device', '_announcementsSuggested',
+            function ($scope, $modal, $state, $timeout, _device, _announcementsSuggested) {
 
                 $scope.device = _device.data;
+                $scope.announcementsSuggested = _announcementsSuggested.data;
 
 
             }]);
