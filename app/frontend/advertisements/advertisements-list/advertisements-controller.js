@@ -96,7 +96,6 @@ angular.module('frontend-module.advertisements')
             };
 
 
-            growl.addSuccessMessage("ddd" + ' has been cloned successfully.');
             $scope.updateBrands = function () {
 
                 CategoryCategories.one($scope.search.categoryId).get({expand: "brands"}).then(function (result) {
@@ -114,8 +113,28 @@ angular.module('frontend-module.advertisements')
 
             $scope.updateDevices = function () {
 
-                ProductProducts.one($scope.search.productId).get({expand: "devices"}).then(function (result) {
-                    $scope.devicesList = result.data.devices;
+                var filterDevicesList = {};
+                if ($scope.search.productId) {
+                    filterDevicesList = $.extend(filterDevicesList,
+                        {
+                            'query[1][type]': "eq",
+                            'query[1][field]': "device_product_id",
+                            'query[1][value]': $scope.search.productId
+                        }
+                    );
+                }
+                if ($scope.search.brandId) {
+                    filterDevicesList = $.extend(filterDevicesList,
+                        {
+                            'query[2][type]': "eq",
+                            'query[2][field]': "device_brand_id",
+                            'query[2][value]': $scope.search.brandId
+                        }
+                    );
+                }
+                DeviceDevices.getList(filterDevicesList).then(function (result) {
+
+                    $scope.devicesList = result.data;
                 })
             };
             $scope.updateContent = function () {

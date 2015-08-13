@@ -1,0 +1,83 @@
+<div class="box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Search</h3>
+
+        <div class="box-tools pull-right">
+            <button ng-click="clearSearchFields()" class="btn btn-box-tool"
+                    data-widget="collapse"><i class="fa fa- fa-refresh"></i></button>
+            <button ng-show="!searchFilterDisabled" ng-click="searchFilterDisabled=true" class="btn btn-box-tool"
+                    data-widget="collapse"><i class="fa fa-minus"></i></button>
+
+            <button ng-show="searchFilterDisabled" ng-click="searchFilterDisabled=false" class="btn btn-box-tool"
+                    data-widget="remove"><i class="glyphicon glyphicon-new-window"></i></button>
+        </div>
+    </div>
+
+    <div ng-if="!searchFilterDisabled" class="box-body" style="display: block;">
+        <div class="row">
+            <div class="col-md-12">
+                <form role="form">
+
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                                <input ng-change="instantSearch(search.nameSearch)"
+                                       ng-model="search.nameSearch"
+                                       type="text" class="form-control"
+                                       placeholder="Search Announcement">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="form-group">
+
+
+                            <select ui-select2 name="categoryId" ng-model="search.categoryId"
+                                    class="form-control"
+                                    ng-click="updateBrands()"
+                                    placeholder="Search Categories">
+                                <option value=""></option>
+                                <option value="{{ category.id }}" ng-repeat="category in categoriesList">{{
+                                    category.name }}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-3" ng-if=brandsList.length>
+                        <div class="form-group">
+
+
+                            <select ui-select2 name="brandId" ng-model="search.brandId"
+                                    class="form-control"
+                                    ng-click="selectSelect()"
+                                    placeholder="Search Brands">
+                                <option value=""></option>
+                                <option value="{{ brand.id }}" ng-repeat="brand in brandsList">{{
+                                    brand.name }}
+                                </option>
+                            </select>
+
+                        </div>
+                    </div>
+
+
+                </form>
+
+
+            </div>
+            <div class="col-md-12">
+                <form role="form">
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <div class="box-footer" style="display: block;">
+
+    </div>
+</div>
