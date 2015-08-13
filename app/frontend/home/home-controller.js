@@ -8,7 +8,14 @@ angular.module('frontend-module.home')
                 _announcementsList: [
                     'ContentContents',
                     function (ContentContents) {
-                        return ContentContents.getList();
+                        return ContentContents.getList(
+                            {
+                                'sort': '-updatedAt',
+                                expand: '',
+                                'per-page': 6,
+                                page: 1
+                            }
+                        );
                     }
                 ],
                 _topCategories: [
