@@ -27,7 +27,8 @@
                         {{announcement.name}}
 
                     </a>
-                    {{announcement.shortDescription}}<a ui-sref="frontend.advertisements.view({id:announcement.id})">Read
+                    {{announcement.shortDescription| cut:true:150}}<a
+                        ui-sref="frontend.advertisements.view({id:announcement.id})">Read
                     more ..</a>
 
                 </p>

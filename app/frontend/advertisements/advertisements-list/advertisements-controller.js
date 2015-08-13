@@ -100,14 +100,17 @@ angular.module('frontend-module.advertisements')
 
                 CategoryCategories.one($scope.search.categoryId).get({expand: "brands"}).then(function (result) {
 
-                    $scope.brandsList = result.data.brands
+                    $scope.brandsList = result.data.brands;
+                    $scope.productsList = [];
+                    $scope.devicesList = [];
                 })
             };
             $scope.updateProducts = function () {
 
                 BrandBrands.one($scope.search.brandId).get({expand: "products"}).then(function (result) {
 
-                    $scope.productsList = result.data.products
+                    $scope.productsList = result.data.products;
+                    $scope.devicesList = [];
                 })
             };
 

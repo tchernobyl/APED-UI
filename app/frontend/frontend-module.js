@@ -20,7 +20,8 @@ angular.module('frontend-module', ["frontend-module.dashboard"])
                                 'components/directives/timeline/timeline.js',
                                 'components/directives/notifications/notifications.js',
                                 'components/directives/chat/chat.js',
-                                'components/directives/dashboard/stats/stats.js'
+                                'components/directives/dashboard/stats/stats.js',
+                                'components/directives/truncate/truncate-text-filter.js'
                             ]
                         })
 

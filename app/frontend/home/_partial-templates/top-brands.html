@@ -10,7 +10,12 @@
         <div class="timeline-item">
             <span class="time"><i class="fa fa-clock-o"></i>40</span>
 
-            <h3 class="timeline-header no-border"><a href="#">{{topBrand.type}}</a> {{topBrand.shortDescription}}
+            <h3 class="timeline-header no-border"><a
+                    ui-sref="frontend.brands.view({id:topBrand.id})">{{topBrand.type}}</a>
+                {{topBrand.shortDescription| cut:true:70}}
+                <a ui-sref="frontend.brands.view({id:topBrand.id})">Read
+                    more ..</a>
+
             </h3>
         </div>
     </li>
