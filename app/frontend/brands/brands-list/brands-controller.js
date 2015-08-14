@@ -12,7 +12,7 @@ angular.module('frontend-module.brands')
                     'BrandBrands', '$stateParams',
                     function (BrandBrands, $stateParams) {
                         var page = $stateParams.page ? $stateParams.page : 1;
-                        var perPage = $stateParams.perPage ? $stateParams.perPage : 3;
+                        var perPage = $stateParams.perPage ? $stateParams.perPage : 4;
 
                         var FiltersInstantSearch = {
                             'sort': '-updatedAt',
@@ -51,7 +51,7 @@ angular.module('frontend-module.brands')
             $scope.search.totalItems = _brandsList.headers('x-pagination-total-count');
             $scope.search.currentPage = _brandsList.headers('x-pagination-current-page');
             $scope.search.itemsPerPage = _brandsList.headers('x-pagination-per-page');
-            $scope.search.maxPageSize = 3;
+            $scope.search.maxPageSize = 4;
 
 
             $scope.categoriesList = _categoriesList.data;

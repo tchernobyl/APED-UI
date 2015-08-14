@@ -34,27 +34,35 @@
 
                 </div>
                 <div class="box-body chat" id="chat-box">
-
-
-                    <div class="item" ng-repeat="brand in brandsList">
-                        <img src="dist/img/user4-128x128.jpg" alt="user image"
-                             ng-class="{'offline': !brand.enabled, 'online': brand.enabled,}">
-
-                        <p class="message">
-                            <a ui-sref="frontend.brands.view({id:brand.id})" class="name">
-                                <small class="text-muted pull-right"><i class="fa fa-clock-o"></i>
-                                    {{brand.createdAt}}
-                                </small>
-                                {{brand.name}}
-
-                            </a>
-                            {{brand.shortDescription}}<a
-                                ui-sref="frontend.brands.view({id:brand.id})">Read more ..</a>
-
-                        </p>
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-6" ng-repeat="brand in brandsList">
+                                <div ng-include="'frontend/brands/brands-list/_partial-templates/brand-view-box.html'"></div>
+                            </div>
+                        </div>
 
 
                     </div>
+
+                    <!--<div class="item" ng-repeat="brand in brandsList">-->
+                    <!--<img src="dist/img/user4-128x128.jpg" alt="user image"-->
+                    <!--ng-class="{'offline': !brand.enabled, 'online': brand.enabled,}">-->
+
+                    <!--<p class="message">-->
+                    <!--<a ui-sref="frontend.brands.view({id:brand.id})" class="name">-->
+                    <!--<small class="text-muted pull-right"><i class="fa fa-clock-o"></i>-->
+                    <!--{{brand.createdAt}}-->
+                    <!--</small>-->
+                    <!--{{brand.name}}-->
+
+                    <!--</a>-->
+                    <!--{{brand.shortDescription}}<a-->
+                    <!--ui-sref="frontend.brands.view({id:brand.id})">Read more ..</a>-->
+
+                    <!--</p>-->
+
+
+                    <!--</div>-->
 
 
                     <div class="box-footer">
