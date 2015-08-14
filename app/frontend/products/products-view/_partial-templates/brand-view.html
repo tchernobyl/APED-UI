@@ -1,6 +1,6 @@
 <div class="box box-success">
     <div class="box-header with-border">
-        <h3 class="box-title"> {{brand.name}} </h3>
+        <h3 class="box-title"><a ui-sref="frontend.brands.view({id:brand.id})">{{brand.name}} </a></h3>
 
         <div class="box-tools pull-right">
 
@@ -12,11 +12,22 @@
     <div class="box-body" style="display: block;">
         <div class="row">
             <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4">
 
+                        <img class="medium-img" ng-src="frontend/brands/brands-list/img/{{brand.name}}.png">
+                    </div>
+
+                    <div class="col-sm-8">
+
+                        <p>
+
+                        <h3> {{brand.shortDescription|cut:true:100:" ..."}}</h3></p>
+                        <p> {{brand.description|cut:true:160:" ..."}}</p>
+                    </div>
+                </div>
 
             </div>
-
-
         </div>
 
 
