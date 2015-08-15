@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('sbAdminApp', [
+angular.module('APEDevices', [
         'ngSanitize'
         , 'ngResource'
         , 'restangular'
@@ -60,7 +60,7 @@ angular.module('sbAdminApp', [
 
         $ocLazyLoadProvider.config({
             debug: false,
-            events: true
+            events: false
         });
 
 //        $urlRouterProvider.otherwise('/backend');

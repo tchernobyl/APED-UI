@@ -10,7 +10,7 @@ angular.module('frontend-module', ["frontend-module.dashboard"])
                     return $ocLazyLoad.load(
 
                         {
-                            name: 'sbAdminApp',
+                            name: 'APEDevices',
                             files: [
                                 'components/directives/frontend/header/header.js',
                                 'components/directives/frontend/header/header-notification/header-notification.js',

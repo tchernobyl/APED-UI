@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
+ * @name APEDevices.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the sbAdminApp
+ * Controller of the APEDevices
  */
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .controller('FormCtrl', function ($scope) {
 
     });

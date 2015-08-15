@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .directive('stats', function () {
         return {
             templateUrl: 'components/directives/dashboard/stats/stats.html',

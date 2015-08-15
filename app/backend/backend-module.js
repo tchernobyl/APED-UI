@@ -9,7 +9,7 @@ angular.module('backend-module', ['backend-module.dashboard2'])
                 loadMyDirectives: function ($ocLazyLoad) {
                     return $ocLazyLoad.load(
                         {
-                            name: 'sbAdminApp',
+                            name: 'APEDevices',
                             files: [
                                 'components/directives/backend/header/header.js',
                                 'components/directives/backend/header/header-notification/header-notification.js',

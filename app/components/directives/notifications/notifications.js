@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .directive('notifications', function () {
         return {
             templateUrl: 'components/directives/notifications/notifications.html',

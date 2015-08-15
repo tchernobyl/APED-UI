@@ -1,4 +1,4 @@
-angular.module('sbAdminApp').filter('cut', function () {
+angular.module('APEDevices').filter('cut', function () {
     return function (value, wordwise, max, tail) {
         if (!value) return '';
 
