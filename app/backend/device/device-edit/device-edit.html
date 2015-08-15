@@ -21,7 +21,8 @@
                         <div class="form-group">
                             <label>Category: </label>
 
-                            <select ui-select2 ng-model="device.deviceCategoryId" class="form-control">
+                            <select ui-select2 ng-model="device.deviceCategoryId" class="form-control"
+                                    ng-click="categorySelected()">
                                 <option value="null"
                                         >
                                 </option>
@@ -39,7 +40,8 @@
                         <div class="form-group">
                             <label>Brand: </label>
 
-                            <select ui-select2 ng-model="device.deviceBrandId" class="form-control">
+                            <select ui-select2 ng-model="device.deviceBrandId" class="form-control"
+                                    ng-click="brandSelected()">
 
                                 <option value="{{ brand.id }}"
                                         ng-repeat="brand in brands">{{ brand.name }}

@@ -42,12 +42,26 @@ angular.module('backend-module.device')
         });
     }])
     .controller('DeviceEditController',
-        ['$scope', '$modal', '$state', '$timeout', '_device', '_products', '_categories', '_brands',
-            function ($scope, $modal, $state, $timeout, _device, _products, _categories, _brands) {
+        ['$scope', '$modal', '$state', '$timeout', '_device', '_products', '_categories', '_brands', 'CategoryCategories', 'BrandBrands',
+            function ($scope, $modal, $state, $timeout, _device, _products, _categories, _brands, CategoryCategories, BrandBrands) {
                 $scope.device = _device.data;
                 $scope.brands = _brands.data;
                 $scope.categories = _categories.data;
                 $scope.products = _products.data;
+
+
+                $scope.categorySelected = function () {
+
+                    CategoryCategories.one($scope.device.deviceCategoryId).get({expand: "brands"}).then(function (result) {
+                        $scope.brands = result.data.brands;
+                    });
+                };
+                $scope.brandSelected = function () {
+
+                    BrandBrands.one($scope.device.deviceBrandId).get({expand: "products"}).then(function (result) {
+                        $scope.products = result.data.products;
+                    });
+                };
                 $scope.saveDevice = function () {
                     delete $scope.device.product;
                     delete $scope.device.brand;
