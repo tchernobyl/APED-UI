@@ -1,46 +1,45 @@
-'use strict';
-
-angular.module('APEDevices', [
-        'ngSanitize'
-        , 'ngResource'
-        , 'restangular'
-        , 'oc.lazyLoad'
-        , 'ui.router'
-        , 'ui.select2'
-        , 'ui.bootstrap'
-        , 'angular-loading-bar'
-        , 'angular-growl'
-        , 'ui.slimscroll'
-
-
-        //components
-        , 'controller-factory'
-        , 'device-devices'
-        , 'product-products'
-        , 'brand-brands'
-        , 'category-categories'
-        , 'content-contents'
+var APEDevices = angular.module('APEDevices', [
+    'ngSanitize'
+    , 'APEDevices'
+    , 'ngResource'
+    , 'restangular'
+    , 'oc.lazyLoad'
+    , 'ui.router'
+    , 'ui.select2'
+    , 'ui.bootstrap'
+    , 'angular-loading-bar'
+    , 'angular-growl'
+    , 'ui.slimscroll'
 
 
-        //modules backend
-        , 'backend-module'
-        , 'backend-module.dashboard2'
-        , 'backend-module.device'
-        , 'backend-module.product'
-        , 'backend-module.brand'
-        , 'backend-module.category'
-
-        //modules frontend
-        , 'frontend-module'
-        , 'frontend-module.dashboard'
-        , 'frontend-module.home'
-        , 'frontend-module.advertisements'
-        , 'frontend-module.brands'
-        , 'frontend-module.products'
-        , 'frontend-module.devices'
+    //components
+    , 'controller-factory'
+    , 'device-devices'
+    , 'product-products'
+    , 'brand-brands'
+    , 'category-categories'
+    , 'content-contents'
 
 
-    ])
+    //modules backend
+    , 'backend-module'
+    , 'backend-module.dashboard2'
+    , 'backend-module.device'
+    , 'backend-module.product'
+    , 'backend-module.brand'
+    , 'backend-module.category'
+
+    //modules frontend
+    , 'frontend-module'
+    , 'frontend-module.dashboard'
+    , 'frontend-module.home'
+    , 'frontend-module.advertisements'
+    , 'frontend-module.brands'
+    , 'frontend-module.products'
+    , 'frontend-module.devices'
+]);
+angular.module('APEDevices')
+
     .config([
         'growlProvider', function (growlProvider) {
             growlProvider.globalTimeToLive(3000);

@@ -1,36 +1,41 @@
-var gulp = require('gulp');
-var connect = require('gulp-connect');
-var sass = require('gulp-sass');
-var watch = require('gulp-watch');
-var rimraf = require('rimraf');
-var runSequence = require('run-sequence');
-var imagemin = require('gulp-imagemin');
-var replace = require('gulp-replace');
-var usemin = require('gulp-usemin');
-var uglify = require('gulp-uglify');
-var minifyHtml = require('gulp-minify-html');
-var minifyCss = require('gulp-minify-css');
-var templateCache = require('gulp-angular-templatecache');
-var rev = require('gulp-rev');
-var argv = require('yargs').argv;
+var gulp = require('gulp'),
+    gutil = require('gulp-util'),
+    connect = require('gulp-connect'),
+    rimraf = require('rimraf'),
+    runSequence = require('run-sequence'),
+    imagemin = require('gulp-imagemin'),
+    watch = require('gulp-watch'),
+    sass = require('gulp-sass'),
+    replace = require('gulp-replace'),
+    usemin = require('gulp-usemin'),
+    uglify = require('gulp-uglify'),
+    minifyHtml = require('gulp-minify-html'),
+    minifyCss = require('gulp-minify-css'),
+    templateCache = require('gulp-angular-templatecache'),
+    rev = require('gulp-rev'),
+    rsync = require('rsyncwrapper').rsync
+argv = require('yargs').argv;
 var rename = require("gulp-rename");
+
+
 var config = {
     path: {
         tmp: '.tmp',
         app: 'app',
+        appData: 'app-data',
         build: 'build'
     }
 };
 
 gulp.task('connect', function () {
     connect.server({
-        root: ['.', config.path.app, config.path.tmp],
+        root: [__dirname, config.path.app, config.path.appData, config.path.tmp],
         livereload: true
     });
 });
 
 gulp.task('sass', function () {
-    return gulp.src('app/app.scss')
+    return gulp.src('app/**/*.scss')
         .pipe(sass())
         .pipe(gulp.dest(config.path.tmp));
 });
@@ -42,63 +47,118 @@ gulp.task('livereload', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch('app/app.scss', ['sass']);
+    gulp.watch('app/**/*.scss', ['sass']);
 });
 
-gulp.task('serve', ['sass', 'connect', 'livereload', 'watch']);
+gulp.task('serve', ['sass', 'connect', /*'livereload',*/ 'watch', 'loginServe']);
 
 gulp.task('clean', function (cb) {
     return rimraf(config.path.build, cb);
 });
 
+gulp.task('loginServe', function () {
+    gulp.src(['config.local.php'])
+        .pipe(rename('config.php'))
+        .pipe(imagemin())
+        .pipe(gulp.dest(''));
+});
+
+gulp.task('loginCrossDomain', function () {
+    var buildEnv = argv.env || 'production';
+    gulp.src(['login.php'])
+        .pipe(imagemin())
+        .pipe(gulp.dest(config.path.build + '/php'));
+
+    gulp.src(['config.' + buildEnv + '.php'])
+        .pipe(rename('config.php'))
+        .pipe(imagemin())
+        .pipe(gulp.dest(config.path.build + '/php'));
+});
+
 gulp.task('usemin', function () {
     var buildEnv = argv.env || 'production';
-    return gulp.src('app/index.html')
+
+    gulp.src('app/index.html')
         .pipe(replace('app.css', '../.tmp/app.css'))
-        .pipe(replace('<script src="app.js"></script>', '<script src="app.js"></script><script src="../.tmp/templates.js"></script>'))
+        .pipe(replace('<script src="app.js"></script>',
+            '<script src="app.js"></script><script src="../.tmp/templates.js"></script>'))
         .pipe(replace('<script src="app-config.local.js"></script>',
             '<script src="app-config.' + buildEnv + '.js"></script>'))
+        .pipe(replace('../bower_components/ckeditor/ckeditor.js', '/ckeditor/ckeditor.js'))
         .pipe(usemin({
-            css: [minifyCss(), 'concat', rev(), replace('../images', 'image')],
+            css: [
+                minifyCss(),
+                'concat',
+                rev(),
+                replace('../images', 'images'),
+                replace('select2.png', 'images/select2.png'),
+                replace('select2-spinner.gif', 'images/select2-spinner.gif')
+            ],
             html: [minifyHtml({empty: true})],
-            js: [uglify(), rev()]
+            js: [
+                uglify(),
+                rev(),
+                replace('../bower_components/zeroclipboard/dist/ZeroClipboard.swf', 'ZeroClipboard.swf')
+            ]
         }))
         .pipe(gulp.dest(config.path.build));
 });
 
+
 gulp.task('images', function () {
-    gulp.src('app/images/loading.gif')
+    gulp.src('themes/supr/images/**/*')
+//        .pipe(imagemin())
         .pipe(gulp.dest(config.path.build + '/css/images'));
+
     gulp.src('app/images/**/*')
-        .pipe(imagemin())
+//        .pipe(imagemin())
         .pipe(gulp.dest(config.path.build + '/images'));
+
+    gulp.src(['bower_components/select2/*.png', 'bower_components/select2/*.gif'])
+//        .pipe(imagemin())
+        .pipe(gulp.dest(config.path.build + '/css/images'));
 });
 
 
 gulp.task('fonts', function () {
-    gulp.src('bower_components/font-awesome/fonts/**/*')
+    gulp.src(['bower_components/font-awesome/fonts/**/*', 'bower_components/bootstrap/fonts/**/*'])
         .pipe(gulp.dest(config.path.build + '/fonts'));
-});
-gulp.task('fonts-woothemes', function () {
-    gulp.src('app/templates/fonts/*')
-        .pipe(gulp.dest(config.path.build + '/fonts'))
-    ;
-
 });
 
 gulp.task('template', function () {
-    return gulp.src('app/**/*.html')
+    return gulp.src(['app/**/*.html', '!app/index.html', '!app/page-editor/**/*.html'])
         .pipe(templateCache({module: 'app'}))
         .pipe(gulp.dest(config.path.tmp));
 });
 
+gulp.task('template-editor', function () {
+    return gulp.src(['app/page-editor/**/*.html', 'app/components/elements/**/*.html'])
+        .pipe(templateCache({module: 'pageEditor', root: '../components/elements'}))
+        .pipe(gulp.dest(config.path.tmp + '/page-editor'));
+});
+
+gulp.task('swf', function () {
+    gulp.src('bower_components/zeroclipboard/dist/ZeroClipboard.swf')
+        .pipe(gulp.dest(config.path.build));
+});
 
 gulp.task('build', function (callback) {
     runSequence('clean',
-        ['sass', 'template', 'fonts', 'images', 'fonts-woothemes'],
-        // uncomment if you want to use dummy data
-
-        'usemin',
+        ['sass', 'template', 'template-editor', 'fonts', 'images', 'swf', 'loginCrossDomain'],
+        [ 'usemin' ],
         callback
     );
+});
+
+gulp.task('deploy', function () {
+    rsync({
+        ssh: true,
+        src: 'build/.',
+        dest: 'indra@dev.whizmarketingsystems.com:ui',
+        recursive: true,
+        syncDest: true,
+        args: ['-avz']
+    }, function (error, stdout, stderr, cmd) {
+        gutil.log(stdout);
+    });
 });
