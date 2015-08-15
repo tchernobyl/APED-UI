@@ -9,56 +9,94 @@
 
     </div>
     <div>
-        <div class="box-body chat" id="chat-box">
-
-            <div class="item" ng-repeat="announcement in announcementsSuggested">
-                <img src="templates/images/announcement/announcement1.png" alt="user image"
-                     ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
-
-                <p class="message">
-                    <a ui-sref="frontend.advertisements.view({id:announcement.id})" class="name">
-                        <small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{announcement.createdAt}}
-                        </small>
-                        {{announcement.name}}
-
-                    </a>
+        <div class="box-body chat">
+            <div class="row">
+                <div class="col-sm-6 " ng-repeat="announcement in announcementsSuggested">
 
 
-                </p>
+                    <div class="box box-info ">
+                        <div class="box-header ui-sortable-handle">
+                            <i class="glyphicon glyphicon-th-list"></i>
 
-                <div class="attachment">
-                    <h4>Attachments:</h4>
+                            <h5 class="box-title"><a ui-sref="frontend.advertisements.list({deviceId:device.id})">
 
-                    <p class="filename">
-                        Price :{{announcement.price}}
-                    </p>
+                                <p><span class="text-info"> {{announcement.name |cut:true:10:'..'}}</span>
 
-                    <p class="filename">
+                                </p>
+                            </a>
+                            </h5>
 
-                    </p>
+                            <small class="pull-right">{{announcement.updatedAt}}</small>
 
+                        </div>
+                        <div class="box-body chat">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <img class="img-rounded medium-img"
+                                         ng-src="frontend/devices/devices-list/img/{{device.name}}.png">
+                                </div>
+                                <div class="col-sm-6">
+                                    {{announcement.shortDescription |cut:true:50}}
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
 
                 </div>
 
 
-                <img src="templates/images/users/user2-128x128.png" alt="user image" class=" pull-right"
-                     ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">
-                <small class="text-muted pull-right"><i class="fa fa-user"></i>
-                    hamdouni Ameur
-                </small>
-
             </div>
 
+        </div>
+        <!--<div class="item" ng-repeat="announcement in announcementsSuggested">-->
+        <!--<img src="templates/images/announcement/announcement1.png" alt="user image"-->
+        <!--ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">-->
 
-            <div class="box-footer">
-                <div class="input-group">
-                    <input class="form-control" placeholder="Search...">
+        <!--<p class="message">-->
+        <!--<a ui-sref="frontend.advertisements.view({id:announcement.id})" class="name">-->
+        <!--<small class="text-muted pull-right"><i class="fa fa-clock-o"></i> {{announcement.createdAt}}-->
+        <!--</small>-->
+        <!--{{announcement.name}}-->
 
-                    <div class="input-group-btn">
-                        <button class="btn btn-success"><i class="fa fa-plus"></i></button>
-                    </div>
+        <!--</a>-->
+
+
+        <!--</p>-->
+
+        <!--<div class="attachment">-->
+        <!--<h4>Attachments:</h4>-->
+
+        <!--<p class="filename">-->
+        <!--Price :{{announcement.price}}-->
+        <!--</p>-->
+
+        <!--<p class="filename">-->
+
+        <!--</p>-->
+
+
+        <!--</div>-->
+
+
+        <!--<img src="templates/images/users/user2-128x128.png" alt="user image" class=" pull-right"-->
+        <!--ng-class="{'offline': !announcement.enabled, 'online': announcement.enabled,}">-->
+        <!--<small class="text-muted pull-right"><i class="fa fa-user"></i>-->
+        <!--hamdouni Ameur-->
+        <!--</small>-->
+
+        <!--</div>-->
+
+
+        <div class="box-footer">
+            <div class="input-group">
+                <input class="form-control" placeholder="Search...">
+
+                <div class="input-group-btn">
+                    <button class="btn btn-success"><i class="fa fa-plus"></i></button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>

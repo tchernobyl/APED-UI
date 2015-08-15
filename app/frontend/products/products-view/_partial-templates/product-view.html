@@ -1,6 +1,7 @@
 <div class="box box-primary">
     <div class="box-header with-border">
-        <h3 class="box-title"> {{product.name}}</h3>
+        <h3 class="box-title"><a ui-sref="frontend.products.view({id:product.id,brand_id:null})"> {{product.name}}</a>
+        </h3>
         <small class="pull-right">{{product.updatedAt}}</small>
     </div>
 
