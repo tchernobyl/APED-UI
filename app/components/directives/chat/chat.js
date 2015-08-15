@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .directive('chat', function () {
         return {
             templateUrl: 'components/directives/chat/chat.html',

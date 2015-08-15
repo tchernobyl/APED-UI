@@ -244,7 +244,7 @@ module.exports = function (grunt) {
             },
             options: {
                 mangle: false
-            },
+            }
         },
         // concat: {
         //   dist: {}
@@ -306,7 +306,7 @@ module.exports = function (grunt) {
                         expand: true,
                         cwd: '<%= yeoman.app %>/scripts',
                         src: '**/*.js',
-                        dest: '<%= yeoman.dist %>/scripts',
+                        dest: '<%= yeoman.dist %>/scripts'
                     }
                 ]
             }

@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .directive('headerNotificationFrontend', function () {
         return {
             templateUrl: 'components/directives/frontend/header/header-notification/header-notification.html',

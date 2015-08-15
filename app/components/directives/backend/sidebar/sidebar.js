@@ -7,7 +7,7 @@
  * # adminPosHeader
  */
 
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .directive('sidebarBackend', ['$location', function () {
         return {
             templateUrl: 'components/directives/backend/sidebar/sidebar.html',

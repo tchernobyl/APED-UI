@@ -6,7 +6,7 @@
  * @description
  * # adminPosHeader
  */
-angular.module('sbAdminApp')
+angular.module('APEDevices')
     .directive('headerBackend', function () {
         return {
             templateUrl: 'components/directives/backend/header/header.html',
