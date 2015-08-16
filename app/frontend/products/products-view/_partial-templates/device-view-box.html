@@ -4,7 +4,7 @@
             <p class="message pull-right">
                 <a ui-sref="frontend.devices.view({id:device.id})" class="name">
 
-                    {{device.name}}
+                    {{device.name |cut:true:16:'...'}}
 
                 </a>
 

@@ -1,75 +1,21 @@
 <div class="row">
 
-    <div class="col-sm-4">
+    <div class="col-sm-12">
         <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"> Category</h3>
 
-                <div class="box-tools pull-right">
+            <ol class="breadcrumb">
+                <li><a><i class="fa fa-dashboard"></i> {{announcement.device.categoryId.name}} </a></li>
+                <li><a ui-sref="frontend.brands.view({id:announcement.device.brand.id})">{{announcement.device.brand.name}}</a>
+                </li>
+                <li>
+                    <a ui-sref="frontend.products.view({id:announcement.device.product.id,brand_id:announcement.device.brand.id})">{{announcement.device.product.name}}</a>
+                </li>
+                <li class="active">{{announcement.device.name}}</li>
+            </ol>
 
-                </div>
-            </div>
-
-            <div class="box-body" style="display: block;">
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        {{announcement.device.categoryId.name}}
-                    </div>
-
-
-                </div>
-
-            </div>
 
         </div>
     </div>
-    <div class="col-sm-4">
-        <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"> Brand</h3>
-
-                <div class="box-tools pull-right">
-
-                </div>
-            </div>
-
-            <div class="box-body" style="display: block;">
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        {{announcement.device.brand.name}}
-                    </div>
 
 
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-    <div class="col-sm-4">
-        <div class="box box-danger">
-            <div class="box-header with-border">
-                <h3 class="box-title"> Product</h3>
-
-                <div class="box-tools pull-right">
-
-                </div>
-            </div>
-
-            <div class="box-body" style="display: block;">
-
-                <div class="row">
-                    <div class="col-sm-12">
-                        {{announcement.device.product.name}}
-                    </div>
-
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
 </div>

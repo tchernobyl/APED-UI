@@ -5,7 +5,8 @@ angular.module('extra-fields')
             function ($scope, $modalInstance, _extraFields) {
 
 
-                $scope.extraFields = _extraFields;
+                $scope.extraFields = _extraFields ? _extraFields : {};
+
                 $scope.extraFieldObject = {
                     id: "",
                     name: "",
