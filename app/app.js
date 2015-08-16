@@ -41,7 +41,11 @@ var APEDevices = angular.module('APEDevices', [
 
 ]);
 angular.module('APEDevices')
-
+    .config([
+        '$urlRouterProvider',
+        function ($urlRouteProvider) {
+            $urlRouteProvider.otherwise('/frontend');
+        }])
     .config([
         'growlProvider', function (growlProvider) {
             growlProvider.globalTimeToLive(3000);
