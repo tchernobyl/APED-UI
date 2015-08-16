@@ -19,6 +19,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'brand-brands'
     , 'category-categories'
     , 'content-contents'
+    , 'extra-fields'
 
 
     //modules backend
@@ -37,6 +38,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'frontend-module.brands'
     , 'frontend-module.products'
     , 'frontend-module.devices'
+
 ]);
 angular.module('APEDevices')
 

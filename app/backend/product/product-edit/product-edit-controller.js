@@ -41,30 +41,16 @@ angular.module('backend-module.product')
                 $scope.brands = _brands.data;
 
 
-                var extraFieldObject = {
-                    id: "",
-                    name: "",
-                    field: "",
-                    content: "",
-                    type: "",
-                    enabled: "",
-                    length: ""
-
-                };
-
                 $scope.AddExtraFields = {
                     open: function () {
                         var extraFields = angular.copy($scope.product.extraFields);
 
                         var addExtraFields = $modal.open({
-                            templateUrl: 'components/product-products/extra-fields/extra-fields.html',
+                            templateUrl: 'components/extra-fields/extra-fields.html',
                             controller: 'ExtraFieldsModalController',
                             resolve: {
                                 _extraFields: function () {
                                     return extraFields;
-                                },
-                                _extraFieldObject: function () {
-                                    return extraFieldObject;
                                 }
                             }
                         });
