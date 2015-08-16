@@ -1,0 +1,65 @@
+<form role="form">
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label>Name:</label>
+                <input ng-model="editView.currentField.name" class="form-control">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label>field:</label>
+                <input ng-model="editView.currentField.field" class="form-control">
+
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div class="form-group">
+                <label>Type: </label>
+
+                <select ui-select2 ng-model="editView.currentField.type" class="form-control">
+
+                    <option value="int">Integer</option>
+                    <option value="text">Text</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-11">
+            <div class="form-group">
+                <label>Length:</label>
+                <input type="number" ng-model="editView.currentField.length"
+                       class="form-control">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-11">
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea rows="6" ng-model="editView.currentField.description"
+                          class="form-control"></textarea>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-11">
+            <button type="button" class="btn btn-info" ng-click="saveFieldObject()">Save</button>
+            <button type="button" class="btn btn-danger" ng-click="cancelSaveFieldObject()">Cancel</button>
+        </div>
+    </div>
+
+
+</form>
