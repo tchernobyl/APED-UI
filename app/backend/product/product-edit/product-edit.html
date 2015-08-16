@@ -92,6 +92,46 @@
 
                                 </div>
 
+
+                                <div class="col-sm-12">
+
+
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading"><i class="fa fa-folder fa-fw"></i>
+                                            <label>
+
+                                                Add Extra Fields
+                                                <a ng-click="AddExtraFields.open()">
+                                                    +
+                                                </a>
+                                            </label>
+                                        </div>
+                                        <!-- /.panel-heading -->
+                                        <div class="panel-body">
+                                            <div class="list-group">
+
+                                                <form role="form">
+                                                    <div class="row" ng-repeat="field in product.extraFields">
+                                                        <div class="col-sm-8">
+                                                            <div class="form-group">
+                                                                <label> {{field.name}}</label>
+                                                                <input ng-model="field.content" class="form-control">
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
                             </div>
                         </form>
                     </div>

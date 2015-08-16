@@ -37,10 +37,46 @@ angular.module('backend-module.product')
                     formatSearching: 'Searching the product...',
                     formatNoMatches: 'No product found'
                 };
-
-
                 $scope.product = _product.data;
                 $scope.brands = _brands.data;
+
+
+                var extraFieldObject = {
+                    id: "",
+                    name: "",
+                    field: "",
+                    content: "",
+                    type: "",
+                    enabled: "",
+                    length: ""
+
+                };
+
+                $scope.AddExtraFields = {
+                    open: function () {
+                        var extraFields = angular.copy($scope.product.extraFields);
+
+                        var addExtraFields = $modal.open({
+                            templateUrl: 'components/product-products/extra-fields/extra-fields.html',
+                            controller: 'ExtraFieldsModalController',
+                            resolve: {
+                                _extraFields: function () {
+                                    return extraFields;
+                                },
+                                _extraFieldObject: function () {
+                                    return extraFieldObject;
+                                }
+                            }
+                        });
+                        addExtraFields.result.then(function (result) {
+
+                            $scope.product.extraFields = result;
+                        }, function () {
+
+
+                        });
+                    }
+                };
                 $scope.AddBrands = {
 
                     open: function (brands, $index) {
