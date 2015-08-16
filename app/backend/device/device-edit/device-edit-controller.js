@@ -49,7 +49,28 @@ angular.module('backend-module.device')
                 $scope.categories = _categories.data;
                 $scope.products = _products.data;
 
+                $scope.AddExtraFields = {
+                    open: function () {
+                        var extraFields = angular.copy($scope.device.extraFields);
 
+                        var addExtraFields = $modal.open({
+                            templateUrl: 'components/extra-fields/extra-fields.html',
+                            controller: 'ExtraFieldsModalController',
+                            resolve: {
+                                _extraFields: function () {
+                                    return extraFields;
+                                }
+                            }
+                        });
+                        addExtraFields.result.then(function (result) {
+
+                            $scope.device.extraFields = result;
+                        }, function () {
+
+
+                        });
+                    }
+                };
                 $scope.categorySelected = function () {
 
                     CategoryCategories.one($scope.device.deviceCategoryId).get({expand: "brands"}).then(function (result) {

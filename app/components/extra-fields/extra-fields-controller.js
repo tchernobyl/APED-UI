@@ -1,12 +1,21 @@
-angular.module('product-products')
+angular.module('extra-fields')
 
     .controller('ExtraFieldsModalController',
-        ['$scope', '$modalInstance', '_extraFields', '_extraFieldObject',
-            function ($scope, $modalInstance, _extraFields, _extraFieldObject) {
+        ['$scope', '$modalInstance', '_extraFields',
+            function ($scope, $modalInstance, _extraFields) {
 
 
                 $scope.extraFields = _extraFields;
-                $scope.extraFieldObject = _extraFieldObject;
+                $scope.extraFieldObject = {
+                    id: "",
+                    name: "",
+                    field: "",
+                    content: "",
+                    type: "",
+                    enabled: "",
+                    length: ""
+
+                };
                 $scope.bodyContent = 'list';
                 $scope.editView = {};
 

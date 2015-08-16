@@ -137,8 +137,8 @@
                                         <div class="panel-heading"><i class="fa fa-folder fa-fw"></i>
                                             <label>
 
-                                                Add Products
-                                                <a ng-click="AddProducts.open()">
+                                                Add Extra Fields
+                                                <a ng-click="AddExtraFields.open()">
                                                     +
                                                 </a>
                                             </label>
@@ -146,10 +146,20 @@
                                         <!-- /.panel-heading -->
                                         <div class="panel-body">
                                             <div class="list-group">
-                                                <a ng-repeat="product in device.products "
-                                                   class="list-group-item">
-                                                    {{product.product}}
-                                                </a>
+
+                                                <form role="form">
+                                                    <div class="row" ng-repeat="field in device.extraFields">
+                                                        <div class="col-sm-8">
+                                                            <div class="form-group">
+                                                                <label> {{field.name}}</label>
+                                                                <input ng-model="field.content" class="form-control">
+
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </form>
 
                                             </div>
 
