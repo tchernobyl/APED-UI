@@ -18,9 +18,9 @@
                         <div class="box-header ui-sortable-handle">
                             <i class="glyphicon glyphicon-th-list"></i>
 
-                            <h5 class="box-title"><a ui-sref="frontend.advertisements.list({deviceId:device.id})">
+                            <h5 class="box-title"><a ui-sref="frontend.advertisements.view({id:device.id})">
 
-                                <p><span class="text-info"> {{announcement.name |cut:true:10:'..'}}</span>
+                                <p><span class="text-info"> {{announcement.name |cut:true:16:'..'}}</span>
 
                                 </p>
                             </a>
