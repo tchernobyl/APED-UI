@@ -1,0 +1,99 @@
+<div class="row header">
+
+    <div class="col-sm-12">
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="box box-primary">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-inbox"></i>Inbox</h3>
+
+                        <div class="box-tools pull-right">
+
+                            <div class="has-feedback">
+
+                                <input type="text" class="form-control input-sm" placeholder="Search Mail">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body no-padding">
+                        <div class="mailbox-controls">
+
+                            <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+
+                                <div>
+                                    show [
+                                    <a ng-click="setPerPage(2)">2</a>
+                                    /
+                                    <a ng-click="setPerPage(4)">4</a>
+                                    /
+                                    <a ng-click="setPerPage(6)">6</a>
+                                    /
+                                    <a ng-click="setPerPage(12)">12</a>
+                                    ]
+                                    per page
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="table-responsive mailbox-messages">
+                            <table class="table table-hover table-striped">
+                                <tbody>
+
+                                <tr ng-repeat="message in listMessage">
+
+                                    <td class="mailbox-star"><a><i class="fa fa-star-o text-yellow"></i></a></td>
+                                    <td class="mailbox-name"><a>{{message.sender.firstName+'
+                                        '+message.sender.lastName}}</a></td>
+                                    <td class="mailbox-subject"><b>{{message.subject}}</b> {{message.body
+                                        |cut:true:60:'....'}}
+                                    </td>
+                                    <td class="mailbox-attachment"><i class="fa fa-paperclip"></i></td>
+                                    <td class="mailbox-date">{{message.updatedAt}}</td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="box-footer no-padding">
+                        <div class="mailbox-controls">
+
+                            <button class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                            </button>
+                            <div class="btn-group">
+                                <button class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                <button class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                                <button class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                            </div>
+                            <button class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                            <div class="pull-right">
+                                <pagination ng-model="search.currentPage" ng-change="pageChanged()"
+                                            total-items="search.totalItems"
+                                            items-per-page="search.itemsPerPage"
+                                            max-size="search.maxPageSize"
+                                            boundary-links="search.displayPageBoundaryLinks"
+                                            class="pull-right"></pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ui-view></ui-view>
