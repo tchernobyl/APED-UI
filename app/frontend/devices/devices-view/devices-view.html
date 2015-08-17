@@ -1,3 +1,27 @@
+<div class="row">
+
+    <div class="col-sm-12">
+        <div class="box box-danger">
+
+            <ol class="breadcrumb">
+                <li ui-sref="frontend.categories.view({id:device.categoryId.id})"><a><i class="fa fa-dashboard"></i>
+                    {{device.categoryId.name}} </a></li>
+                <li><a ui-sref="frontend.brands.view({id:device.brand.id})">{{device.brand.name}}</a>
+                </li>
+                <li><a ui-sref="frontend.products.view({id:device.product.id,brand_id:device.brand.id})">{{device.product.name}}</a>
+                </li>
+                <li class="active">{{device.name}}
+                </li>
+            </ol>
+
+
+        </div>
+    </div>
+
+
+</div>
+
+
 <div ng-include="'frontend/devices/devices-view/_partial-templates/device_details.html'"></div>
 <div class="row">
 
