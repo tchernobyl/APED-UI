@@ -154,8 +154,8 @@ body {
     .sidebar-frotend {
         z-index: 1;
         position: absolute;
-        width: 100px;
-        margin-top: 51px;
+        width: 60px;
+        margin-top: 160px;
     }
 
     .navbar-top-links .dropdown-messages,

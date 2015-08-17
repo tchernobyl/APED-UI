@@ -1574,9 +1574,16 @@
 }
 
 @media (min-width:768px) {
-    #page-wrapper-frontend {
+    #page-wrapper-backend {
         position: inherit;
         margin: 0 0 0 100px;
+
+        border-left: 1px solid #e7e7e7;
+    }
+
+    #page-wrapper-frontend {
+        position: inherit;
+        margin: 0 60px 0 60px;
 
         border-left: 1px solid #e7e7e7;
     }
