@@ -10,7 +10,9 @@
                 <li>
                     <a ui-sref="frontend.products.view({id:announcement.device.product.id,brand_id:announcement.device.brand.id})">{{announcement.device.product.name}}</a>
                 </li>
-                <li class="active">{{announcement.device.name}}</li>
+                <li><a ui-sref="frontend.devices.view({id:announcement.device.id})">{{announcement.device.name}}</a>
+                </li>
+                <li class="active">{{announcement.name}}</li>
             </ol>
 
 

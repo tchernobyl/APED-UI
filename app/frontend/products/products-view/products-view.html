@@ -1,4 +1,25 @@
 <div class="row">
+
+    <div class="col-sm-12">
+        <div class="box box-danger">
+
+            <ol class="breadcrumb">
+                <li ng-if="brand.id"><a><i class="fa fa-dashboard"></i> {{brand.name}} </a></li>
+                <li class="active"><a
+                        ui-sref="frontend.brands.view({id:announcement.device.brand.id})">{{product.name}}</a>
+                </li>
+
+
+            </ol>
+
+
+        </div>
+    </div>
+
+
+</div>
+<div class="row">
+
     <div class="col-sm-12">
         <div ng-if="brand.id "
              ng-include="'frontend/products/products-view/_partial-templates/brand-view.html'"></div>
