@@ -1,4 +1,47 @@
 /* Chat widget (DEPRECATED - this will be removed in the next major release. Use Direct Chat instead)*/
+.module-header {
+    padding-top: 20px;
+}
+
+.device-default,
+.product-default {
+    display: block;
+    position: absolute;
+    top: 50%;
+    margin-top: -10px;
+    width: 100%;
+    line-height: 20px;
+    text-align: center;
+    background: #cccccc;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.device-images,
+.product-images {
+    margin-top: 20px;
+    margin-left: -5px;
+    margin-right: -5px;
+}
+
+.device-img-sm,
+.product-img-sm {
+    width: 100px;
+    height: 100px;
+    border: 3px solid #ffffff;
+    outline: 1px solid #cccccc;
+}
+
+.device-image,
+.product-image {
+    display: block;
+    position: relative;
+    margin: 5px;
+    float: left;
+    width: 100px;
+    height: 100px;
+}
 
 .small-img {
     width: 50px;
@@ -1526,6 +1569,60 @@
 
 .btn-box-tool:active {
     outline: none !important;
+}
+
+.box-content-body {
+    background-color: rgba(236, 242, 255, 0.33);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    padding: 10px;
+}
+
+.no-header .box-content-body {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.box-content-body > .table {
+    margin-bottom: 0;
+}
+
+.box-content-body .fc {
+    margin-top: 5px;
+}
+
+.box-content-body .full-width-chart {
+    margin: -19px;
+}
+
+.box-content-body.no-padding .full-width-chart {
+    margin: -9px;
+}
+
+.box-content-body .box-pane {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 3px;
+}
+
+.box-content-body .box-pane-right {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 0;
+}
+
+.box-content-footer {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid #f4f4f4;
+    padding: 10px;
+    background-color: #97a0b3;
 }
 
 .box-body {

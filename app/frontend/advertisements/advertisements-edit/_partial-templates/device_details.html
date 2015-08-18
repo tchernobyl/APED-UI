@@ -1,9 +1,9 @@
 <div class="row">
 
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-if="announcement.device.categoryId">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title"> Category</h3>
+                <h3 class="box-title"><a> {{announcement.device.categoryId.name |cut:true:22}}</a></h3>
 
                 <div class="box-tools pull-right">
 
@@ -14,20 +14,26 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        {{announcement.device.categoryId.name}}
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img class="product-img-sm"
+                                     data-ng-src="{{announcement.device.categoryId.images[0].url}}">
+
+                            </div>
+                        </div>
+
                     </div>
-
-
                 </div>
 
             </div>
 
         </div>
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-if="announcement.device.brand">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title"> Brand</h3>
+                <h3 class="box-title"><a>{{announcement.device.brand.name}}</a></h3>
 
                 <div class="box-tools pull-right">
 
@@ -35,23 +41,30 @@
             </div>
 
             <div class="box-body" style="display: block;">
-
                 <div class="row">
                     <div class="col-sm-12">
-                        {{announcement.device.brand.name}}
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img class="product-img-sm" data-ng-src="{{announcement.device.brand.images[0].url}}">
+
+                            </div>
+                        </div>
+
                     </div>
-
-
                 </div>
+
 
             </div>
 
         </div>
+
+
     </div>
-    <div class="col-sm-4">
+    <div class="col-sm-4" ng-if="announcement.device.product">
         <div class="box box-danger">
             <div class="box-header with-border">
-                <h3 class="box-title"> Product</h3>
+                <h3 class="box-title"><a>{{announcement.device.product.name}}</a></h3>
 
                 <div class="box-tools pull-right">
 
@@ -59,14 +72,19 @@
             </div>
 
             <div class="box-body" style="display: block;">
-
                 <div class="row">
                     <div class="col-sm-12">
-                        {{announcement.device.product.name}}
+
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <img class="product-img-sm" data-ng-src="{{announcement.device.product.images[0].url}}">
+
+                            </div>
+                        </div>
+
                     </div>
-
-
                 </div>
+
 
             </div>
 

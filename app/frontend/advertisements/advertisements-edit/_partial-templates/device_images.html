@@ -1,0 +1,36 @@
+<div class="row">
+
+    <div class="col-sm-12" ng-if="announcement.device.images.length">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title"> Photos</h3>
+
+                <div class="box-tools pull-right">
+
+                </div>
+            </div>
+
+            <div class="box-body" style="display: block;">
+
+                <div ng-model="announcement.device.images"
+                     class="device-images clearfix">
+
+                    <div class="product-image"
+                         ng-repeat="image in announcement.device.images">
+
+                        <a href="" ng-click="choiceImage(image)">
+                            <img ng-if="$index==0" class="product-img-sm" data-ng-src="{{image.url}}"
+                                 data-title="Default">
+                            <img ng-if="$index>0" class="product-img-sm" data-ng-src="{{image.url}}">
+                            <span ng-if="$index==0" class="product-default">Default</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+</div>

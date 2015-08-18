@@ -11,10 +11,11 @@ angular.module('backend-module.device')
                     'DeviceDevices', '$stateParams',
                     function (DeviceDevices, $stateParams) {
                         if ($stateParams.id) {
-                            return DeviceDevices.one($stateParams.id).get({expand: "products"});
+                            return DeviceDevices.one($stateParams.id).get({expand: "products,images"});
                         } else {
                             var dataDevice = {data: DeviceDevices.one()};
                             dataDevice.data.products = [];
+                            dataDevice.data.images = [];
                             return dataDevice;
                         }
 
@@ -67,6 +68,24 @@ angular.module('backend-module.device')
                             $scope.device.extraFields = result;
                         }, function () {
 
+
+                        });
+                    }
+                };
+                $scope.UploadFile = {
+                    open: function () {
+
+                        var actionConfiguration = $modal.open({
+                            templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                            controller: 'AddImagesModalController'
+
+                        });
+                        actionConfiguration.result.then(function (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                $scope.device.images.push(result[i]);
+                            }
+
+                        }, function () {
 
                         });
                     }

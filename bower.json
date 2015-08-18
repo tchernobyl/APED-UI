@@ -12,6 +12,7 @@
         "angular-sanitize": "~1.2.22",
         "angular-resource": "~1.2.19",
         "angular-route": "1.2.27",
+        "angular-file-upload": "~1.1.1",
         "restangular": "~1.4.0",
         "angular-ui-router": "~0.2.13",
         "angular-strap": "~2.0.5",

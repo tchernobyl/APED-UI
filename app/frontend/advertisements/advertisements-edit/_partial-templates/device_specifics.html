@@ -1,0 +1,69 @@
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title"> {{announcement.device.name |cut:true:20}}</h3>
+
+        <div class="box-tools pull-right">
+
+            <small class="label label-info"><i class="fa fa-clock-o"></i> {{announcement.device.type|cut:true:15}}
+            </small>
+        </div>
+    </div>
+
+    <div class="box-body" style="display: block;">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <ul class="todo-list">
+                    <li>
+                                        <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="text">weight:</span>
+                        <span class="text pull-right"> {{announcement.device.weight}}</span>
+                    </li>
+                    <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="">width:</span>
+                        <span class="text pull-right"> {{announcement.device.width}}</span>
+                    </li>
+                    <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="">height:</span>
+                        <span class="text pull-right"> {{announcement.device.height}}</span>
+                    </li>
+                    <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="">depth:</span>
+                        <span class="text pull-right"> {{announcement.device.depth}}</span>
+                    </li>
+                    <li>
+                                         <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="">price:</span>
+                        <span class="text pull-right"> {{announcement.device.price}}</span>
+                    </li>
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="box-footer" style="display: block;">
+
+
+    </div>
+</div>
