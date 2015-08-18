@@ -11,38 +11,40 @@
     <div>
         <div class="box-body chat">
             <div class="row">
-                <div class="col-sm-6 " ng-repeat="announcement in announcementsSuggested">
+                <div class="col-sm-12">
+                    <div class="col-sm-6 " ng-repeat="announcement in announcementsSuggested">
 
 
-                    <div class="box box-info ">
-                        <div class="box-header ui-sortable-handle">
-                            <i class="glyphicon glyphicon-th-list"></i>
+                        <div class="box box-info ">
+                            <div class="box-header ui-sortable-handle">
+                                <i class="glyphicon glyphicon-th-list"></i>
 
-                            <h5 class="box-title"><a ui-sref="frontend.advertisements.view({id:announcement.id})">
+                                <h5 class="box-title"><a ui-sref="frontend.advertisements.view({id:announcement.id})">
 
-                                <p><span class="text-info"> {{announcement.name |cut:true:16:'..'}}</span>
+                                    <p><span class="text-info"> {{announcement.name |cut:true:16:'..'}}</span>
 
-                                </p>
-                            </a>
-                            </h5>
+                                    </p>
+                                </a>
+                                </h5>
 
-                            <small class="pull-right">{{announcement.updatedAt}}</small>
+                                <small class="pull-right">{{announcement.updatedAt}}</small>
 
-                        </div>
-                        <div class="box-body chat">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <img class="img-rounded medium-img"
-                                         ng-src="frontend/devices/devices-list/img/{{device.name}}.png">
-                                </div>
-                                <div class="col-sm-6">
-                                    {{announcement.shortDescription |cut:true:50}}
-                                </div>
                             </div>
+                            <div class="box-body chat">
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <img class="img-rounded medium-img"
+                                             ng-src="frontend/devices/devices-list/img/{{device.name}}.png">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        {{announcement.shortDescription |cut:true:50}}
+                                    </div>
+                                </div>
 
+                            </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
 
 

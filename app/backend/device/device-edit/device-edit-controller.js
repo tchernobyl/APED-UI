@@ -11,10 +11,11 @@ angular.module('backend-module.device')
                     'DeviceDevices', '$stateParams',
                     function (DeviceDevices, $stateParams) {
                         if ($stateParams.id) {
-                            return DeviceDevices.one($stateParams.id).get({expand: "products"});
+                            return DeviceDevices.one($stateParams.id).get({expand: "products,images"});
                         } else {
                             var dataDevice = {data: DeviceDevices.one()};
                             dataDevice.data.products = [];
+                            dataDevice.data.images = [];
                             return dataDevice;
                         }
 
