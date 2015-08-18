@@ -15,6 +15,7 @@ angular.module('backend-module.category')
                         } else {
                             var object = {data: CategoryCategories.one()};
                             object.data.brands = [];
+                            object.data.images = [];
                             return object;
                         }
 
@@ -77,6 +78,25 @@ angular.module('backend-module.category')
                             $scope.category.brands = result;
                         }, function () {
 
+
+                        });
+                    }
+                };
+                $scope.UploadFile = {
+                    open: function () {
+
+                        var actionConfiguration = $modal.open({
+                            templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                            controller: 'AddImagesModalController'
+
+                        });
+                        actionConfiguration.result.then(function (result) {
+                            console.log(result)
+                            for (var i = 0; i < result.length; i++) {
+                                $scope.category.images.push(result[i]);
+                            }
+
+                        }, function () {
 
                         });
                     }

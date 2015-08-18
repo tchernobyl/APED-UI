@@ -15,6 +15,8 @@ angular.module('backend-module.product')
                         } else {
                             var product = {data: ProductProducts.one()};
                             product.data.brands = [];
+                            product.data.images = [];
+
                             return product;
                         }
 
@@ -40,7 +42,24 @@ angular.module('backend-module.product')
                 $scope.product = _product.data;
                 $scope.brands = _brands.data;
 
+                $scope.UploadFile = {
+                    open: function () {
 
+                        var actionConfiguration = $modal.open({
+                            templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                            controller: 'AddImagesModalController'
+
+                        });
+                        actionConfiguration.result.then(function (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                $scope.product.images.push(result[i]);
+                            }
+
+                        }, function () {
+
+                        });
+                    }
+                };
                 $scope.AddExtraFields = {
                     open: function () {
                         var extraFields = angular.copy($scope.product.extraFields);

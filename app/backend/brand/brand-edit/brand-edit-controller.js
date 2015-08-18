@@ -15,6 +15,8 @@ angular.module('backend-module.brand')
                         } else {
                             var object = {data: BrandBrands.one()};
                             object.data.categories = [];
+                            object.data.images = [];
+
                             return object;
                         }
 
@@ -34,6 +36,27 @@ angular.module('backend-module.brand')
             function ($scope, $modal, $state, $timeout, _brand, _categories) {
                 $scope.brand = _brand.data;
                 $scope.categories = _categories.data;
+
+
+                $scope.UploadFile = {
+                    open: function () {
+
+                        var actionConfiguration = $modal.open({
+                            templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                            controller: 'AddImagesModalController'
+
+                        });
+                        actionConfiguration.result.then(function (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                $scope.brand.images.push(result[i]);
+                            }
+
+                        }, function () {
+
+                        });
+                    }
+                };
+
                 $scope.AddCategories = {
 
                     open: function (categories, $index) {

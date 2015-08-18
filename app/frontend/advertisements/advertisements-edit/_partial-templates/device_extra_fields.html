@@ -1,0 +1,46 @@
+<div class="box box-success">
+    <div class="box-header with-border">
+        <h3 class="box-title"> Specifics </h3>
+
+        <div class="box-tools pull-right">
+
+            <small class="label label-info"><i class="fa fa-clock-o"></i> {{announcement.device.extraFields.length}}
+            </small>
+        </div>
+    </div>
+
+    <div class="box-body" style="display: block;">
+        <div class="row">
+            <div class="col-sm-12">
+
+                <ul class="todo-list">
+                    <li ng-if="!announcement.device.extraFields">
+                                        <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="text">---</span>
+
+                    </li>
+                    <li ng-repeat="item in announcement.device.extraFields">
+                                        <span class="handle ui-sortable-handle">
+                                            <i class="fa fa-ellipsis-v"></i>
+                                            <i class="fa fa-ellipsis-v"></i>
+                                        </span>
+                        <span class="text">{{item.name}}</span>
+                        <span class="text pull-right"> {{item.content}}</span>
+                    </li>
+
+                </ul>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <div class="box-footer" style="display: block;">
+
+
+    </div>
+</div>
