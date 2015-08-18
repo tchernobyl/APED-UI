@@ -101,7 +101,14 @@ angular.module('backend-module.category')
                         });
                     }
                 };
+
                 $scope.saveCategory = function () {
+
+
+                    for (var i = 0; i < $scope.category.brands.length; i++) {
+                        delete($scope.category.brands[i].images);
+                    }
+                    console.log($scope.category.brands);
                     $scope.category.save().then(function () {
 
                         $state.go("backend.category.list");

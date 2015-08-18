@@ -83,6 +83,15 @@ angular.module('backend-module.brand')
                     }
                 };
                 $scope.saveBrand = function () {
+
+                    //TODO stop update related objects when save
+                    for (var j = 0; j < $scope.brand.products.length; j++) {
+                        delete($scope.brand.products[j].images);
+                    }
+                    for (var i = 0; i < $scope.brand.categories.length; i++) {
+                        delete($scope.brand.categories[i].images);
+                    }
+                    console.log($scope.brand.categories);
                     $scope.brand.save().then(function () {
 
                         $state.go("backend.brand.list");
