@@ -71,6 +71,24 @@ angular.module('backend-module.device')
                         });
                     }
                 };
+                $scope.UploadFile = {
+                    open: function () {
+
+                        var actionConfiguration = $modal.open({
+                            templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                            controller: 'AddImagesModalController'
+
+                        });
+                        actionConfiguration.result.then(function (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                $scope.device.images.push(result[i]);
+                            }
+
+                        }, function () {
+
+                        });
+                    }
+                };
                 $scope.categorySelected = function () {
 
                     CategoryCategories.one($scope.device.deviceCategoryId).get({expand: "brands"}).then(function (result) {

@@ -10,6 +10,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'angular-loading-bar'
     , 'angular-growl'
     , 'ui.slimscroll'
+    , 'angularFileUpload'
 
 
     //components
@@ -21,6 +22,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'content-contents'
     , 'extra-fields'
     , 'message-messages'
+    , 'file-files'
 
 
     //modules backend
