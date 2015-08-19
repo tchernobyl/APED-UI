@@ -23,6 +23,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'extra-fields'
     , 'message-messages'
     , 'file-files'
+    , 'user-users'
 
 
     //modules backend

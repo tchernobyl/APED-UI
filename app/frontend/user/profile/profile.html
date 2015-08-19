@@ -1,3 +1,48 @@
-profile
+<div class="row header">
 
-<ui-view></ui-view>
+    <div class="col-sm-12">
+
+        <div class="row">
+            <div class="col-sm-12">
+
+                <div class="box box-primary">
+
+                    <div class="box-header with-border">
+                        <h3 class="box-title"><i class="fa fa-user"></i>Profile</h3>
+
+                        <div class="box-tools pull-right">
+
+                            <div class="has-feedback">
+
+                                <input type="text" class="form-control input-sm" placeholder="Search Mail">
+                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body no-padding">
+                        <div class="tabbable tabs-left settings-tab">
+                            <ul class="nav nav-tabs">
+                                <li ui-sref-active="active"><a
+                                        ui-sref="frontend.user.profile.details"> Details</a></li>
+                                <li ui-sref-active="active"><a
+                                        ui-sref="frontend.user.profile.images">Photos</a></li>
+
+                            </ul>
+
+                            <div class="tab-content">
+                                <div class="tab-pane active">
+                                    <ui-view></ui-view>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="box-footer no-padding">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
