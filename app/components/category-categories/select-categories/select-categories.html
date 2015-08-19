@@ -8,22 +8,29 @@
         <div class="rows">
             <div class="row">
                 <div class="col-sm-6">
-                    <div style="cursor:  pointer;"
-                         ng-click="deleteCategory(category)"
-                         class="alert alert-success"
-                         ng-repeat="category in brandCategories">
-                        <a>{{category.name}}</a>
+                    <div class="tags">
+                        <p>
+                            <a class=" bg-green-gradient" ng-repeat="category in brandCategories"
+                               ng-click="deleteCategory(category)">
+                                {{category.name}}
+                            </a>
+                        </p>
 
                     </div>
+
                 </div>
                 <div class="col-sm-6">
-                    <div style="cursor:  pointer;"
-                         ng-click="selectCategory(category)"
-                         class="alert alert-info"
-                         ng-repeat="category in categories">
-                        <a>{{category.name}}</a>
+                    <div class="tags">
+                        <p>
+                            <a class="bg-red-gradient"
+                               ng-repeat="category in categories"
+                               ng-click="selectCategory(category)">
+                                {{category.name}}
+                            </a>
+                        </p>
 
                     </div>
+
                 </div>
             </div>
         </div>
