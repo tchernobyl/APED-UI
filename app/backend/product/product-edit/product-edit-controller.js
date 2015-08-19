@@ -109,6 +109,9 @@ angular.module('backend-module.product')
                     }
                 };
                 $scope.saveProduct = function () {
+                    for (var i = 0; i < $scope.product.brands.length; i++) {
+                        delete($scope.product.brands[i].images);
+                    }
                     $scope.product.save().then(function () {
 
                         $state.go("backend.product.list");
