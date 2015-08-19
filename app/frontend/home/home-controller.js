@@ -11,7 +11,7 @@ angular.module('frontend-module.home')
                         return ContentContents.getList(
                             {
                                 'sort': '-updatedAt',
-                                expand: '',
+                                expand: 'device',
                                 'per-page': 6,
                                 page: 1
                             }
@@ -21,13 +21,40 @@ angular.module('frontend-module.home')
                 _topCategories: [
                     'CategoryCategoriesFormatted',
                     function (CategoryCategoriesFormatted) {
-                        return CategoryCategoriesFormatted.getList();
+                        return CategoryCategoriesFormatted.getList(
+                            {
+                                'sort': '-updatedAt',
+                                expand: 'images',
+                                'per-page': 3,
+                                page: 1
+                            }
+                        );
+                    }
+                ],
+                _topProducts: [
+                    'ProductProducts',
+                    function (ProductProducts) {
+                        return ProductProducts.getList(
+                            {
+                                'sort': '-updatedAt',
+                                expand: 'images',
+                                'per-page': 3,
+                                page: 1
+                            }
+                        );
                     }
                 ],
                 _topBrands: [
                     'BrandBrands',
                     function (BrandBrands) {
-                        return BrandBrands.getList();
+                        return BrandBrands.getList(
+                            {
+                                'sort': '-updatedAt',
+                                expand: 'images',
+                                'per-page': 3,
+                                page: 1
+                            }
+                        );
                     }
                 ]
             },
@@ -37,13 +64,14 @@ angular.module('frontend-module.home')
         });
     }])
     .controller('HomeFrontendController',
-        ['$scope', '$modal', '$timeout', '_announcementsList', '_topCategories', '_topBrands',
-            function ($scope, $modal, $timeout, _announcementsList, _topCategories, _topBrands) {
+        ['$scope', '$modal', '$timeout', '_announcementsList', '_topCategories', '_topBrands', '_topProducts',
+            function ($scope, $modal, $timeout, _announcementsList, _topCategories, _topBrands, _topProducts) {
 
 
                 $scope.announcementsList = _announcementsList.data;
                 $scope.topCategories = _topCategories.data;
                 $scope.topBrands = _topBrands.data;
+                $scope.topProducts = _topProducts.data;
 
 
             }]);
