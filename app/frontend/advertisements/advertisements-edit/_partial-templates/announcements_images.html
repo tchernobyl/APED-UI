@@ -1,0 +1,32 @@
+<div class="col-sm-12 box box-default">
+    <div class="box-header with-border">
+        <h3 class="box-title">Images </h3>
+
+        <div class="box-tools pull-right">
+
+        </div>
+    </div>
+
+    <div class="box-body" style="display: block;">
+        <div class=col-sm-12>
+            <div ng-model="announcement.images"
+                 class="device-images clearfix">
+
+                <div class="product-image"
+                     ng-repeat="image in announcement.images">
+
+                    <a href="" ng-click="choiceImage(image)">
+                        <img ng-if="$index==0" class="product-img-sm" data-ng-src="{{image.url}}"
+                             data-title="Default">
+                        <img ng-if="$index>0" class="product-img-sm" data-ng-src="{{image.url}}">
+                        <span ng-if="$index==0" class="product-default">Default</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-footer" style="display: block;">
+        <button type="submit" class="btn btn-success" data-ng-click="UploadFile.open()">Upload</button>
+
+    </div>
+</div>

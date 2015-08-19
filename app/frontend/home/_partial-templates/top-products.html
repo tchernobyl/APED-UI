@@ -1,0 +1,23 @@
+<ul class="timeline">
+    <li class="time-label">
+                  <span class="bg-aqua-gradient">
+                     Top Products
+                  </span>
+    </li>
+    <li ng-repeat="topProduct in topProducts">
+        <i class="fa fa-folder bg-aqua"></i>
+
+        <div class="timeline-item">
+            <span class="time"><i class="fa fa-clock-o"></i>40</span>
+
+            <h3 class="timeline-header no-border"><a
+                    ui-sref="frontend.brands.view({id:topProduct.id})">{{topProduct.name}}</a>
+                {{topProduct.shortDescription| cut:true:70}}
+                <a ui-sref="frontend.brands.view({id:topProduct.id})">Read
+                    more ..</a>
+
+            </h3>
+        </div>
+    </li>
+
+</ul>

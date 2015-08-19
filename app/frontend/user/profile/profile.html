@@ -10,13 +10,11 @@
                     <div class="box-header with-border">
                         <h3 class="box-title"><i class="fa fa-user"></i>Profile</h3>
 
-                        <div class="box-tools pull-right">
 
-                            <div class="has-feedback">
+                        <div class="box-tools">
+                            <button class="btn btn-box-tool" data-widget="collapse">edit</button>
 
-                                <input type="text" class="form-control input-sm" placeholder="Search Mail">
-                                <span class="glyphicon glyphicon-search form-control-feedback"></span>
-                            </div>
+                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
                     </div>
 
@@ -41,7 +39,7 @@
 
                     </div>
                     <div class="box-footer no-padding">
-
+                        <a class=" btn btn-primary center-block" ng-click="saveProfile()">Update Profile</a>
                     </div>
                 </div>
             </div>

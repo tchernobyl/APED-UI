@@ -3,24 +3,35 @@ angular.module('frontend-module.user.profile')
         $stateProvider.state('frontend.user.profile.images', {
             url: '/images',
             templateUrl: 'frontend/user/profile/images/images.html',
-            controller: 'globalImagesProfileController',
-            resolve: {
-                _profile: [
-                    'UserUsers',
-                    function (UserUsers) {
-                        return UserUsers.getList();
-                    }
-                ]
-            }
+            controller: 'globalImagesProfileController'
+
 
 
         });
     }])
     .controller('globalImagesProfileController',
         ['$scope', '$modal', '_profile'
-            , function ($scope, $modal, _profile) {
+            , function ($scope, $modal) {
 
-            $scope.profile = _profile.data;
+
+            $scope.UploadFile = {
+                open: function () {
+
+                    var actionConfiguration = $modal.open({
+                        templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                        controller: 'AddImagesModalController'
+
+                    });
+                    actionConfiguration.result.then(function (result) {
+                        for (var i = 0; i < result.length; i++) {
+                            $scope.profile.images.push(result[i]);
+                        }
+
+                    }, function () {
+
+                    });
+                }
+            };
 
 
         }]);

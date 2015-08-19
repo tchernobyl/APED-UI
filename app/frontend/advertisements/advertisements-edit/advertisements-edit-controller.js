@@ -15,6 +15,7 @@ angular.module('frontend-module.advertisements')
                         } else {
                             var announcement = {data: ContentContents.one()};
                             announcement.data.device = {};
+                            announcement.data.images = [];
                             return announcement;
                         }
 
@@ -38,9 +39,29 @@ angular.module('frontend-module.advertisements')
 
                 $scope.changeDeviceObject = function () {
                     var index = _.findIndex($scope.devicesList, {id: Number($scope.announcement.deviceId)  });
-                    console.log($scope.announcement.deviceId, index);
+
                     $scope.announcement.device = $scope.devicesList[index];
 
+                };
+                $scope.UploadFile = {
+
+                    open: function () {
+                        console.log($scope.announcement);
+
+                        var actionConfiguration = $modal.open({
+                            templateUrl: 'components/device-devices/add-images-modal/add-images-modal.html',
+                            controller: 'AddImagesModalController'
+
+                        });
+                        actionConfiguration.result.then(function (result) {
+                            for (var i = 0; i < result.length; i++) {
+                                $scope.announcement.images.push(result[i]);
+                            }
+
+                        }, function () {
+
+                        });
+                    }
                 };
                 $scope.saveAnnouncement = function () {
                     $scope.announcement.ownerId = 1;

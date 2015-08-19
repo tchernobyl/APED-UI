@@ -3,24 +3,17 @@ angular.module('frontend-module.user.profile')
         $stateProvider.state('frontend.user.profile.settings', {
             url: '/settings',
             templateUrl: 'frontend/user/profile/settings/settings.html',
-            controller: 'globalSettingsProfileController',
-            resolve: {
-                _profile: [
-                    'UserUsers',
-                    function (UserUsers) {
-                        return UserUsers.getList();
-                    }
-                ]
-            }
+            controller: 'globalSettingsProfileController'
+
 
 
         });
     }])
     .controller('globalSettingsProfileController',
-        ['$scope', '$modal', '_profile'
-            , function ($scope, $modal, _profile) {
+        ['$scope', '$modal'
+            , function ($scope, $modal) {
 
-            $scope.profile = _profile.data;
+            console.log($scope.profile)
 
 
         }]);
