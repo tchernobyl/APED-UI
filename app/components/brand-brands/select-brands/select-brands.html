@@ -5,25 +5,32 @@
     </div>
     <div class="modal-body">
 
-        <div class="rows">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div style="cursor:  pointer;"
-                         ng-click="deleteObject(brand)"
-                         class="alert alert-success"
-                         ng-repeat="brand in oldBrands">
-                        <a>{{brand.type}}</a>
+        <div class="row">
 
-                    </div>
+            <div class="col-sm-6">
+                <div class="tags">
+                    <p>
+                        <a class=" bg-green-gradient" ng-repeat="brand in oldBrands" ng-click="deleteObject(brand)">
+                            {{brand.name}}
+                        </a>
+                    </p>
+
                 </div>
-                <div class="col-sm-6">
-                    <div style="cursor:  pointer;"
-                         ng-click="selectObject(brand)"
-                         class="alert alert-info"
-                         ng-repeat="brand in brands">
-                        <a>{{brand.type}}</a>
 
-                    </div>
+
+            </div>
+            <div class="col-sm-6">
+
+
+                <div class="tags">
+                    <p>
+                        <a class="bg-red-gradient"
+                           ng-repeat="brand in brands"
+                           ng-click="selectObject(brand)">
+                            {{brand.name}}
+                        </a>
+                    </p>
+
                 </div>
             </div>
         </div>
