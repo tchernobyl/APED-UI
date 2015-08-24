@@ -64,7 +64,8 @@
                         <div class="form-group">
                             <label>Product: </label>
 
-                            <select ui-select2 ng-model="device.deviceProductId" class="form-control">
+                            <select ui-select2 ng-model="device.deviceProductId" class="form-control"
+                                    ng-click="productSelected()">
                                 <option value="null"
                                         >
                                 </option>

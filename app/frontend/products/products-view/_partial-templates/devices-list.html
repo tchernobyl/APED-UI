@@ -1,3 +1,34 @@
+<div class="box box-default">
+    <div class="box-header with-border">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="box-body chat" id="chat-pagination">
+                    <div class="pull-left">
+                        show [
+                        <a ng-click="setPerPage(2)">2</a>
+                        /
+                        <a ng-click="setPerPage(4)">4</a>
+                        /
+                        <a ng-click="setPerPage(6)">6</a>
+                        /
+                        <a ng-click="setPerPage(12)">12</a>
+                        ]
+                        per page
+                    </div>
+                    <pagination ng-model="search.currentPage" ng-change="pageChanged()"
+                                total-items="search.totalItems"
+                                items-per-page="search.itemsPerPage"
+                                max-size="search.maxPageSize" boundary-links="search.displayPageBoundaryLinks"
+                                class="pull-right"></pagination>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
 <div class="item">
     <div class="row">
         <div class="col-md-6" ng-repeat="device in relatedDevices">
@@ -6,43 +37,15 @@
         </div>
     </div>
 </div>
+<div class="box box-default">
+    <div class="box-header with-border">
+        <div class="row">
+
+        </div>
+
+    </div>
 
 
-<!--<div class="box box-success">-->
-<!--<div class="box-header with-border">-->
-<!--<h3 class="box-title"> {{product.name}} devices</h3>-->
-
-<!--<div class="box-tools pull-right">-->
-
-<!--<small class="label label-info"><i class="fa fa-clock-o"></i> {{relatedDevices.length}}-->
-<!--</small>-->
-<!--</div>-->
-<!--</div>-->
-
-<!--<div class="box-body" style="display: block;">-->
-<!--<div class="row">-->
-<!--<div class="col-sm-12">-->
-
-<!--<ul class="todo-list">-->
-<!--<li ng-repeat="device in relatedDevices">-->
-<!--<span class="handle ui-sortable-handle">-->
-<!--<i class="fa fa-ellipsis-v"></i>-->
-<!--<i class="fa fa-ellipsis-v"></i>-->
-<!--</span>-->
-<!--<span class="text" ui-sref="frontend.devices.view({id:device.id})">{{device.name}}</span>-->
-<!--<span class="text pull-right">-->
-<!--<small class="label label-info"><i class="fa fa-clock-o"></i> 35-->
-<!--</small></span>-->
-<!--</li>-->
+</div>
 
 
-<!--</ul>-->
-<!--</div>-->
-
-
-<!--</div>-->
-
-
-<!--</div>-->
-
-<!--</div>-->

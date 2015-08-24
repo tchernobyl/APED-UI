@@ -45,6 +45,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'frontend-module.user'
     , 'frontend-module.user.message'
     , 'frontend-module.user.profile'
+    , 'frontend-module.compare'
 
 ]);
 angular.module('APEDevices')

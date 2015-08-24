@@ -14,6 +14,7 @@ angular.module('extra-fields')
                     content: "",
                     type: "",
                     enabled: "",
+                    unit: "",
                     length: ""
 
                 };

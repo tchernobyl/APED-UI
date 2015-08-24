@@ -102,6 +102,20 @@ angular.module('backend-module.device')
                         $scope.products = result.data.products;
                     });
                 };
+                $scope.productSelected = function () {
+
+                    var index = _.findIndex($scope.products, {id: parseInt($scope.device.deviceProductId) });
+
+                    if (index < 0) {
+                        $scope.device.product = {};
+
+                    } else {
+                        $scope.device.product = $scope.products[index];
+
+                        $scope.device.extraFields = $scope.device.product.extraFields;
+                    }
+
+                };
                 $scope.saveDevice = function () {
                     delete $scope.device.product;
                     delete $scope.device.brand;
