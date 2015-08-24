@@ -49,5 +49,19 @@ angular.module('frontend-module.compare')
 
                 $scope.product = _product.data;
                 $scope.sizeDiv = 12 / parseInt($scope.devicesToCompare.length);
+                $scope.findFieldInDevice = function (name, deviceId) {
+                    var indexDevice = _.findIndex($scope.devicesToCompare, {id: parseInt(deviceId)  });
+                    if (indexDevice > -1) {
+                        var indexField = _.findIndex($scope.devicesToCompare[indexDevice].extraFields, {name: name  });
+                        if (indexField > -1) {
+                            return $scope.devicesToCompare[indexDevice].extraFields[indexField].content;
+                        } else {
+                            return "N/A"
+                        }
+                    } else {
+                        return "N/A"
+                    }
+
+                }
 
             }]);
