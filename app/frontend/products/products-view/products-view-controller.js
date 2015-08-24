@@ -69,11 +69,117 @@ angular.module('frontend-module.products')
         });
     }])
     .controller('ProductsViewController',
-        ['$scope', '$modal', '$state', '$timeout', '_product', '_devices', '_brand',
-            function ($scope, $modal, $state, $timeout, _product, _devices, _brand) {
+        ['$scope', '$modal', '$state', '$timeout', '_product', '_devices', '_brand', 'DeviceDevices',
+            function ($scope, $modal, $state, $timeout, _product, _devices, _brand, DeviceDevices) {
+
+                $scope.devicesToCompare = [];
 
                 $scope.product = _product.data;
-                $scope.relatedDevices = _devices.data;
                 $scope.brand = _brand.data;
+                $scope.relatedDevices = _devices.data;
+
+                $scope.search = {};
+
+                $scope.search.totalItems = _devices.headers('x-pagination-total-count');
+                $scope.search.currentPage = _devices.headers('x-pagination-current-page');
+                $scope.search.itemsPerPage = _devices.headers('x-pagination-per-page');
+                $scope.search.maxPageSize = 34;
+
+                $scope.compareDevice = function (device) {
+                    console.log(device.images);
+                    if ($scope.devicesToCompare.length < 2) {
+                        $scope.devicesToCompare.push(device)
+                    } else {
+                        $scope.devicesToCompare[0] = $scope.devicesToCompare[1];
+                        $scope.devicesToCompare[1] = device;
+                    }
+                };
+                $scope.setPerPage = function (perPage) {
+                    $scope.search.itemsPerPage = perPage;
+                    goToDevicesList();
+
+                };
+
+
+                $scope.instantSearch = function (tmpStr) {
+
+
+                    setTimeout(function () {
+
+                        if ((tmpStr == $scope.search.nameSearch)) {
+                            $scope.search.nameSearch = tmpStr;
+                            goToDevicesList();
+                        }
+
+                    }, 250);
+                };
+                $scope.updateContent = function () {
+
+                    goToDevicesList();
+                };
+                $scope.pageChanged = function () {
+
+                    goToDevicesList()
+                };
+
+                $scope.selectSelect = function () {
+
+
+                    goToDevicesList();
+                };
+                $scope.clearSearchFields = function () {
+                    $scope.search.nameSearch = null;
+
+                    $scope.search.brandId = null;
+                    $scope.search.categoryId = null;
+
+                    $scope.brandsList = [];
+                    $scope.productsList = [];
+
+                    $scope.instantSearch();
+                };
+                function goToDevicesList() {
+                    var page = $scope.search.currentPage;
+                    var perPage = $scope.search.itemsPerPage;
+
+                    var FiltersInstantSearch = {
+                        'sort': '-updatedAt',
+                        expand: '',
+                        'per-page': perPage,
+                        page: page,
+                        'query[1][type]': "eq",
+                        'query[1][field]': "device_product_id",
+                        'query[1][value]': $scope.product.id
+                    };
+
+
+                    if ($scope.brand.id) {
+
+
+                        FiltersInstantSearch = $.extend(FiltersInstantSearch,
+                            {
+                                'query[2][type]': "eq",
+                                'query[2][field]': "device_brand_id",
+                                'query[2][value]': $scope.brand.id
+                            }
+                        );
+                    }
+                    DeviceDevices.getList(
+                            FiltersInstantSearch
+                        ).then(function (result) {
+
+                            $scope.relatedDevices = result.data;
+
+                            $scope.search = {};
+
+                            $scope.search.totalItems = result.headers('x-pagination-total-count');
+                            $scope.search.currentPage = result.headers('x-pagination-current-page');
+                            $scope.search.itemsPerPage = result.headers('x-pagination-per-page');
+                            $scope.search.maxPageSize = 34;
+                            $scope.displayPageBoundaryLinks = Math.ceil($scope.search.totalItems / $scope.search.itemsPerPage) > $scope.search.maxPageSize;
+
+                        });
+
+                }
 
             }]);

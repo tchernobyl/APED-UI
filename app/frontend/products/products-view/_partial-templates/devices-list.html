@@ -1,7 +1,28 @@
 <div class="box box-default">
     <div class="box-header with-border">
         <div class="row">
+            <div class="col-lg-12">
+                <div class="box-body chat" id="chat-pagination">
+                    <div class="pull-left">
+                        show [
+                        <a ng-click="setPerPage(2)">2</a>
+                        /
+                        <a ng-click="setPerPage(4)">4</a>
+                        /
+                        <a ng-click="setPerPage(6)">6</a>
+                        /
+                        <a ng-click="setPerPage(12)">12</a>
+                        ]
+                        per page
+                    </div>
+                    <pagination ng-model="search.currentPage" ng-change="pageChanged()"
+                                total-items="search.totalItems"
+                                items-per-page="search.itemsPerPage"
+                                max-size="search.maxPageSize" boundary-links="search.displayPageBoundaryLinks"
+                                class="pull-right"></pagination>
 
+                </div>
+            </div>
         </div>
 
     </div>
