@@ -12,7 +12,20 @@
                 <div class="col-xs-12">
                     <h5 class="page-header">
                         <p><span class="text-aqua"> Type :</span> {{brand.type}}</p>
-                        {{brand.shortDescription}}
+
+                        <div class="media">
+                            <div class="media-left">
+
+                                <a href="#">
+                                    <img class="medium-img" src="{{brand.images[0].url}}">
+                                </a>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">{{brand.shortDescription}}</h4>
+
+                            </div>
+                        </div>
+
 
                     </h5>
                     {{brand.description}}
