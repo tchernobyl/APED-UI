@@ -1,0 +1,46 @@
+<div id="devices-marketing-vault" class="marketing-vault-container">
+    <a href="#devices-marketing-vault" class="close">&times;</a>
+
+    <h2>devices</h2>
+
+    <form class="form-inline marketing-vault-form">
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <input type="text" class="form-control" ng-model="options.search" placeholder="search"
+                       ng-change="FindDevice(options.search)"/>
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button" ng-click="options.search = ''"><i
+                            class="fa fa-times"></i></button>
+                </span>
+            </div>
+        </div>
+    </form>
+
+    <div class="marketing-vault-list" ng-repeat="device in options.devices | filter: options.filter">
+
+        <a href="" class="marketing-vault-item" ng-click="options.select(device)">
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <img ng-if="device.images.length" class="marketing-vaut-device-img"
+                         ng-src="{{ device.images[0].url }}"
+                         tooltip="{{ device.name }}"/>
+                    <!--< img src="http://placehold.it/80x80"/>-->
+                    <img ng-if="!device.images.length" class="marketing-vaut-device-img"
+                         ng-src="http://placehold.it/80x80&text=no+image"
+                         tooltip="{{ device.name }}"/>
+                </div>
+                <div class="col-sm-9">
+                    <h4 ng-bind="device.name"></h4>
+                    <span ng-bind="device.price | currency"></span>
+                    <br/>
+                    <span>Qty on hand:</span>
+                    <span ng-bind="device.quantity"></span>
+                </div>
+            </div>
+
+        </a>
+    </div>
+
+</div>

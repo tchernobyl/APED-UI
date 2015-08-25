@@ -1,0 +1,46 @@
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="box  ">
+                        <div class="box-body small-body-content-100" style="display: block;">
+
+                            <p class="message ">
+                                <a class="name">
+                                    Images
+                                </a>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-{{sizeDiv}}" ng-repeat="device in devicesToCompare">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box  ">
+                                <div class="box-body small-body-content-100" style="display: block;">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+
+
+                                            <img class="medium-img-70"
+                                                 src="{{device.images[0].url}}">
+
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
