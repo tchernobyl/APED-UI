@@ -24,6 +24,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'message-messages'
     , 'file-files'
     , 'user-users'
+    , 'marketing-vault'
 
 
     //modules backend

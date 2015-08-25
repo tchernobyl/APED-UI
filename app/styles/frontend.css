@@ -2769,3 +2769,78 @@
     }
 }
 
+.marketing-vault-container {
+    z-index: 1099;
+    position: fixed;
+    width: 400px;
+    padding: 20px;
+    height: 100%;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+    right: -400px;
+    background: #eeeeee;
+    border-left: 1px solid #c4c4c4;
+    transition: right 0.5s;
+}
+
+.marketing-vault-container.on {
+    padding: 20px;
+    right: 0;
+}
+
+.quantity-field {
+    width: 80px;
+}
+
+.marketing-vault-form {
+    margin-bottom: 20px;
+}
+
+.marketing-vault-form .vault-field {
+    width: 156px;
+}
+
+.marketing-vault-form .search-field {
+    width: 200px;
+}
+
+.marketing-vault-list h4 {
+    margin: 0;
+}
+
+.marketing-vault-item,
+.marketing-vault-item-action {
+    display: block;
+    background: #f6f6f6;
+    color: #333333;
+    margin: 5px 0;
+    padding: 10px;
+    border: 1px solid transparent;
+}
+
+.marketing-vault-item:hover,
+.marketing-vault-item-action:hover {
+    color: #333333;
+    background: #ffffff;
+    border: 1px solid #cccccc;
+    text-decoration: none;
+}
+
+.marketing-vault-item-container .marketing-vault-item {
+    float: left;
+    width: 90%;
+}
+
+.marketing-vault-item-container .marketing-vault-item-action {
+    float: right;
+    width: 10%;
+    padding: 9px;
+}
+
+.marketing-vaut-device-img {
+    width: 60px;
+    height: 60px;
+    border: 3px solid #ffffff;
+    outline: 1px solid #cccccc;
+}

@@ -1,0 +1,61 @@
+<div class="col-sm-12">
+    <div class="row">
+        <div class="col-sm-2">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="box box-default ">
+                        <div class="box-header with-border">
+
+                            <p class="message pull-left">
+                                <a class="name">
+                                    {{product.name}}
+                                    <a ng-show="devicesToCompare.length<4" ng-href="#devices-marketing-vault"><i
+                                            class="fa fa-plus-circle"></i></a>
+                                </a>
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="row">
+                <div class="col-sm-{{sizeDiv}}" ng-repeat="device in devicesToCompare">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="box box-success ">
+                                <div class="box-header with-border">
+
+                                    <p class="message pull-left">
+                                        <a ng-click="changeDevice($index)"
+                                           class="name">
+                                            {{device.name}}
+
+                                        </a>
+                                    </p>
+
+
+                                    <div class="box-tools pull-right">
+                                        <button ng-click="deleteDevice($index)"
+                                                class="btn btn-box-tool"
+                                                data-widget="collapse"><i class="fa fa-trash-o"></i></button>
+                                        <button ng-show="!actualitiesDisabled" ng-click="actualitiesDisabled=true"
+                                                class="btn btn-box-tool"
+                                                data-widget="collapse"><i class="fa fa-minus"></i></button>
+                                        <button ng-show="actualitiesDisabled" ng-click="actualitiesDisabled=false"
+                                                class="btn btn-box-tool"
+                                                data-widget="remove"><i class="glyphicon glyphicon-new-window"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<devices-marketing-vault options="devicesMarketingVaultOptions"></devices-marketing-vault>-->
+<devices-marketing-vault options="addDevicesMarketingVaultOptions"></devices-marketing-vault>
