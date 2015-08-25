@@ -1,8 +1,8 @@
 <div class="row">
 <div ng-include="'frontend/compare/compare-devices/_partial-templates/header-search.html'"></div>
 <div ng-include="'frontend/compare/compare-devices/_partial-templates/devices-names.html'"></div>
-
-
+<div ng-include="'frontend/compare/compare-devices/_partial-templates/devices-brands.html'"></div>
+<!--<div ng-include="'frontend/compare/compare-devices/_partial-templates/devices-images.html'"></div>-->
 <div class="col-sm-12">
     <div class="row">
         <div class="col-sm-2">
@@ -33,10 +33,20 @@
                                         <div class="col-sm-12">
 
 
-                                            <h5 class="page-header">
-                                                {{device.shortDescription |cut:true:60:''}}
+                                            <div class="media">
+                                                <div class="media-left">
 
-                                            </h5>
+                                                    <a href="#">
+                                                        <img class="medium-img" src="{{device.images[0].url}}">
+                                                    </a>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4 class="media-heading"> {{device.shortDescription
+                                                        |cut:true:60:''}}</h4>
+
+                                                </div>
+                                            </div>
+
                                             {{device.description|cut:true:200:''}}
 
 
