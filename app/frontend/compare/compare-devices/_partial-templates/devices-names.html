@@ -8,7 +8,7 @@
 
                             <p class="message pull-left">
                                 <a class="name">
-                                    {{product.name}}
+                                    {{product.name || 'Device'}}
                                     <a ng-show="devicesToCompare.length<4" ng-href="#devices-marketing-vault"><i
                                             class="fa fa-plus-circle"></i></a>
                                 </a>

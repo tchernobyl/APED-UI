@@ -71,6 +71,19 @@ angular.module('frontend-module.compare')
 
                 };
 
+                $scope.productMarketingVaultOptions = {
+
+                    filter: function (product) {
+
+                        if ($scope.product.id == product.id) return false;
+                        else return true;
+                    },
+                    select: function (product) {
+
+                        $state.go(".", {id: product.id})
+                        $scope.productMarketingVaultOptions.close();
+                    }
+                };
 
                 $scope.addDevicesMarketingVaultOptions = {
                     product: $scope.product,
@@ -86,6 +99,7 @@ angular.module('frontend-module.compare')
                             $scope.sizeDiv = 12 / parseInt($scope.devicesToCompare.length);
                         }
 
+
 //                        var params={};
 //                      for(var i=1; i<$scope.devicesToCompare.length+1;i++){
 //                          params['device'+i]=$scope.devicesToCompare[i-1].id;
@@ -93,8 +107,7 @@ angular.module('frontend-module.compare')
 //                      }
 //
 //                        params.id=$scope.product.id;
-//                        console.log(params)
-//                        $state.go(".", params);
+
 
                         $scope.addDevicesMarketingVaultOptions.close();
                     }
