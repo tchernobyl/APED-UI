@@ -116,6 +116,13 @@ angular.module('backend-module.device')
                     }
 
                 };
+                //TODO complete this function so that it can find the device extra fields that they did not exist in product extra fields .
+                function verifyExtraFieldsFromProduct() {
+                    if ($scope.device.product.extraFields) {
+
+                    }
+                }
+
                 $scope.saveDevice = function () {
                     delete $scope.device.product;
                     delete $scope.device.brand;
