@@ -52,25 +52,51 @@ angular.module('frontend-module.compare')
                 $scope.indexDeviceToBeChanged = null;
                 $scope.product = _product.data;
                 $scope.sizeDiv = 12 / parseInt($scope.devicesToCompare.length);
+
+
                 $scope.findFieldInDevice = function (name, deviceId) {
                     var indexDevice = _.findIndex($scope.devicesToCompare, {id: parseInt(deviceId)  });
                     if (indexDevice > -1) {
                         var indexField = _.findIndex($scope.devicesToCompare[indexDevice].extraFields, {name: name  });
                         if (indexField > -1) {
-                            return $scope.devicesToCompare[indexDevice].extraFields[indexField].content;
+                            return {
+                                content: $scope.devicesToCompare[indexDevice].extraFields[indexField].content,
+                                unit: $scope.devicesToCompare[indexDevice].extraFields[indexField].unit || ""
+                            }
                         } else {
-                            return "N/A"
+                            return {
+                                content: "N/A",
+                                unit: ""
+                            }
                         }
                     } else {
-                        return "N/A"
+                        return{
+                            content: "N/A",
+                            unit: ""
+                        }
                     }
 
                 };
+
+
                 $scope.changeDevice = function ($index) {
                     $scope.indexDeviceToBeChanged = $index;
 
                 };
 
+                $scope.productMarketingVaultOptions = {
+
+                    filter: function (product) {
+
+                        if ($scope.product.id == product.id) return false;
+                        else return true;
+                    },
+                    select: function (product) {
+
+                        $state.go(".", {id: product.id})
+                        $scope.productMarketingVaultOptions.close();
+                    }
+                };
 
                 $scope.addDevicesMarketingVaultOptions = {
                     product: $scope.product,
@@ -86,6 +112,7 @@ angular.module('frontend-module.compare')
                             $scope.sizeDiv = 12 / parseInt($scope.devicesToCompare.length);
                         }
 
+
 //                        var params={};
 //                      for(var i=1; i<$scope.devicesToCompare.length+1;i++){
 //                          params['device'+i]=$scope.devicesToCompare[i-1].id;
@@ -93,8 +120,7 @@ angular.module('frontend-module.compare')
 //                      }
 //
 //                        params.id=$scope.product.id;
-//                        console.log(params)
-//                        $state.go(".", params);
+
 
                         $scope.addDevicesMarketingVaultOptions.close();
                     }

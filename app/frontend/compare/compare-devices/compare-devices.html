@@ -288,8 +288,9 @@
                                 <div class="box-body very-body-content" style="display: block;">
                                     <div class="row">
                                         <div class="col-sm-12">
-                                            {{findFieldInDevice(field.name,device.id) }}
+                                            {{findFieldInDevice(field.name,device.id).content }}
 
+                                            <span class="text-aqua"> {{findFieldInDevice(field.name,device.id).unit }}</span>
                                         </div>
 
                                     </div>

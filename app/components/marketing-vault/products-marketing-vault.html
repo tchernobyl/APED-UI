@@ -1,14 +1,14 @@
-<div id="devices-marketing-vault" class="marketing-vault-container">
-    <a href="#devices-marketing-vault" class="close">&times;</a>
+<div id="products-marketing-vault" class="marketing-vault-container">
+    <a href="#products-marketing-vault" class="close">&times;</a>
 
-    <h2>devices</h2>
+    <h2>products</h2>
 
     <form class="form-inline marketing-vault-form">
         <div class="form-group">
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-search"></i></span>
                 <input type="text" class="form-control" ng-model="options.search" placeholder="search"
-                       ng-change="FindDevice(options.search)"/>
+                       ng-change="FindProduct(options.search)"/>
                 <span class="input-group-btn">
                     <button class="btn btn-default" type="button" ng-click="options.search = ''"><i
                             class="fa fa-times"></i></button>
@@ -17,23 +17,23 @@
         </div>
     </form>
 
-    <div class="marketing-vault-list" ng-repeat="device in options.devices | filter: options.filter">
+    <div class="marketing-vault-list" ng-repeat="product in options.products | filter: options.filter">
 
-        <a href="" class="marketing-vault-item" ng-click="options.select(device)">
+        <a href="" class="marketing-vault-item" ng-click="options.select(product)">
 
             <div class="row">
                 <div class="col-sm-3">
-                    <img ng-if="device.images.length" class="marketing-vault-device-img"
-                         ng-src="{{ device.images[0].url }}"
-                         tooltip="{{ device.name }}"/>
+                    <img ng-if="product.images.length" class="marketing-vault-product-img"
+                         ng-src="{{ product.images[0].url }}"
+                         tooltip="{{ product.name }}"/>
                     <!--< img src="http://placehold.it/80x80"/>-->
-                    <img ng-if="!device.images.length" class="marketing-vault-device-img"
+                    <img ng-if="!product.images.length" class="marketing-vault-product-img"
                          ng-src="http://placehold.it/80x80&text=no+image"
-                         tooltip="{{ device.name }}"/>
+                         tooltip="{{ product.name }}"/>
                 </div>
                 <div class="col-sm-9">
-                    <h4 ng-bind="device.name"></h4>
-                    <span ng-bind="device.price | currency"></span>
+                    <h4 ng-bind="product.name"></h4>
+                    <span ng-bind="product.price | currency"></span>
                     <br/>
 
                 </div>
