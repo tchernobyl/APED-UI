@@ -64,6 +64,7 @@ angular.module('frontend-module.advertisements')
                     }
                 };
 
+
                 $scope.saveAnnouncement = function () {
                     $scope.announcement.ownerId = 1;
                     $scope.announcement.save().then(function () {
