@@ -65,7 +65,7 @@ angular.module('APEDevices')
         function (RestangularProvider) {
 
             RestangularProvider
-                .setBaseUrl("http://project/PortalsWay/APEDevices/backend/web/index.php/backend/")
+                .setBaseUrl("http://pfe/backend/")
                 .setDefaultRequestParams({accessToken: "token"})
                 .setFullResponse(true);
         }
