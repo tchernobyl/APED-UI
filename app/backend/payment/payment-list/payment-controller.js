@@ -58,17 +58,17 @@ angular.module('backend-module.payment')
 
 
                     PaymentPayments.getList(
-                            FiltersPayments
-                        ).then(function (result) {
+                        FiltersPayments
+                    ).then(function (result) {
 
-                            $scope.payments = result.data;
+                        $scope.payments = result.data;
 
-                            $scope.search.totalItems = result.headers('x-pagination-total-count');
-                            $scope.search.currentPage = result.headers('x-pagination-current-page');
-                            $scope.search.itemsPerPage = result.headers('x-pagination-per-page');
-                            $scope.displayPageBoundaryLinks = Math.ceil($scope.search.totalItems / $scope.search.itemsPerPage) > $scope.search.maxPageSize;
+                        $scope.search.totalItems = result.headers('x-pagination-total-count');
+                        $scope.search.currentPage = result.headers('x-pagination-current-page');
+                        $scope.search.itemsPerPage = result.headers('x-pagination-per-page');
+                        $scope.displayPageBoundaryLinks = Math.ceil($scope.search.totalItems / $scope.search.itemsPerPage) > $scope.search.maxPageSize;
 
-                        });
+                    });
 
                 }
             }]);
