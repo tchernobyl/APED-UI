@@ -34,6 +34,8 @@ var APEDevices = angular.module('APEDevices', [
     , 'backend-module.product'
     , 'backend-module.brand'
     , 'backend-module.category'
+    , 'backend-module.shipping'
+    , 'backend-module.payment'
 
     //modules frontend
     , 'frontend-module'
@@ -47,8 +49,10 @@ var APEDevices = angular.module('APEDevices', [
     , 'frontend-module.user.message'
     , 'frontend-module.user.profile'
     , 'frontend-module.compare'
-    , 'backend-module.payment'
-    ,'payment-payments'
+    , 'payment-payments'
+    , 'shipping-shippings'
+
+
 
 ]);
 angular.module('APEDevices')
