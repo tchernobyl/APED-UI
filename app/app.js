@@ -34,6 +34,8 @@ var APEDevices = angular.module('APEDevices', [
     , 'backend-module.product'
     , 'backend-module.brand'
     , 'backend-module.category'
+    , 'backend-module.shipping'
+    , 'backend-module.payment'
 
     //modules frontend
     , 'frontend-module'
@@ -47,6 +49,10 @@ var APEDevices = angular.module('APEDevices', [
     , 'frontend-module.user.message'
     , 'frontend-module.user.profile'
     , 'frontend-module.compare'
+    , 'payment-payments'
+    , 'shipping-shippings'
+
+
 
 ]);
 angular.module('APEDevices')
@@ -65,7 +71,7 @@ angular.module('APEDevices')
         function (RestangularProvider) {
 
             RestangularProvider
-                .setBaseUrl("http://project/PortalsWay/APEDevices/backend/web/index.php/backend/")
+                .setBaseUrl("http://pfe/backend/")
                 .setDefaultRequestParams({accessToken: "token"})
                 .setFullResponse(true);
         }
