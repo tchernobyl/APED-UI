@@ -6,6 +6,7 @@ angular.module('backend-module.product')
             templateUrl: 'backend/product/product-list/product.html',
             controller: 'ProductListController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _products: [
                     'ProductProducts', '$stateParams',

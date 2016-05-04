@@ -1,56 +1,57 @@
 'use strict';
-angular.module('backend-module.payment')
+angular.module('backend-module.country')
     .config(['$stateProvider', function ($stateProvider) {
-        $stateProvider.state('backend.payment.list', {
+        $stateProvider.state('backend.country.list', {
             url: '/list?nameSearch&perPage&page',
-            templateUrl: 'backend/payment/payment-list/payment.html',
-            controller: 'PaymentListController',
+            templateUrl: 'backend/country/country-list/country.html',
+            controller: 'CountryListController',
             authenticate: true,
             role: "admin",
             resolve: {
-                _payments: [
-                    'PaymentPayments', '$stateParams',
-                    function (PaymentPayments, $stateParams) {
+                _countrys: [
+                    'CountryCountrys', '$stateParams',
+                    function (CountryCountrys, $stateParams) {
                         var page = $stateParams.page ? $stateParams.page : 1;
                         var perPage = $stateParams.perPage ? $stateParams.perPage : 4;
 
-                        var FiltersPayments = {
+                        var FiltersCountrys = {
                             'sort': '-updatedAt',
                             expand: '',
                             'per-page': perPage,
                             page: page
                         };
-                        return PaymentPayments.getList(FiltersPayments);
+                        return CountryCountrys.getList(FiltersCountrys);
                     }
                 ]
             }
         });
     }])
-    .controller('PaymentListController',
-        ['$scope', '$rootScope', '$modal', '$timeout', '_payments', 'PaymentPayments',
-            function ($scope, $rootScope, $modal, $timeout, _payments, PaymentPayments) {
+    .controller('CountryListController',
+        ['$scope', '$rootScope', '$modal', '$timeout', '_countrys', 'CountryCountrys',
+            function ($scope, $rootScope, $modal, $timeout, _countrys, CountryCountrys) {
+
                 $scope.search = {};
-                $scope.payments = _payments.data;
-                $scope.search.totalItems = _payments.headers('x-pagination-total-count');
-                $scope.search.currentPage = _payments.headers('x-pagination-current-page');
-                $scope.search.itemsPerPage = _payments.headers('x-pagination-per-page');
+                $scope.countrys = _countrys.data;
+                $scope.search.totalItems = _countrys.headers('x-pagination-total-count');
+                $scope.search.currentPage = _countrys.headers('x-pagination-current-page');
+                $scope.search.itemsPerPage = _countrys.headers('x-pagination-per-page');
                 $scope.search.maxPageSize = 4;
                 $scope.setPerPage = function (perPage) {
                     $scope.search.itemsPerPage = perPage;
-                    goToPaymentsList();
+                    goToCountrysList();
 
                 };
 
                 $scope.pageChanged = function () {
 
-                    goToPaymentsList()
+                    goToCountrysList()
                 };
-                function goToPaymentsList() {
+                function goToCountrysList() {
 
                     var page = $scope.search.currentPage;
                     var perPage = $scope.search.itemsPerPage;
 
-                    var FiltersPayments = {
+                    var FiltersCountrys = {
                         'sort': '-updatedAt',
                         expand: '',
                         'per-page': perPage,
@@ -58,11 +59,11 @@ angular.module('backend-module.payment')
                     };
 
 
-                    PaymentPayments.getList(
-                        FiltersPayments
+                    CountryCountrys.getList(
+                        FiltersCountrys
                     ).then(function (result) {
 
-                        $scope.payments = result.data;
+                        $scope.countrys = result.data;
 
                         $scope.search.totalItems = result.headers('x-pagination-total-count');
                         $scope.search.currentPage = result.headers('x-pagination-current-page');

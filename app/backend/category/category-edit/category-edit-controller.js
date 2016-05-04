@@ -6,6 +6,7 @@ angular.module('backend-module.category')
             templateUrl: 'backend/category/category-edit/category-edit.html',
             controller: 'CategoryEditController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _category: [
                     'CategoryCategories', '$stateParams',

@@ -6,6 +6,7 @@ angular.module('backend-module.shipping')
             templateUrl: 'backend/shipping/shipping-list/shipping.html',
             controller: 'ShippingListController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _shippings: [
                     'ShippingShippings', '$stateParams',

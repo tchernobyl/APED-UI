@@ -6,6 +6,7 @@ angular.module('backend-module.payment')
             templateUrl: 'backend/payment/payment-edit/payment-edit.html',
             controller: 'PaymentEditController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _payment: [
                     'PaymentPayments', '$stateParams',

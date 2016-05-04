@@ -1,56 +1,57 @@
 'use strict';
-angular.module('backend-module.payment')
+angular.module('backend-module.zone')
     .config(['$stateProvider', function ($stateProvider) {
-        $stateProvider.state('backend.payment.list', {
+        $stateProvider.state('backend.zone.list', {
             url: '/list?nameSearch&perPage&page',
-            templateUrl: 'backend/payment/payment-list/payment.html',
-            controller: 'PaymentListController',
+            templateUrl: 'backend/zone/zone-list/zone.html',
+            controller: 'ZoneListController',
             authenticate: true,
             role: "admin",
             resolve: {
-                _payments: [
-                    'PaymentPayments', '$stateParams',
-                    function (PaymentPayments, $stateParams) {
+                _zones: [
+                    'ZoneZones', '$stateParams',
+                    function (ZoneZones, $stateParams) {
                         var page = $stateParams.page ? $stateParams.page : 1;
                         var perPage = $stateParams.perPage ? $stateParams.perPage : 4;
 
-                        var FiltersPayments = {
+                        var FiltersZones = {
                             'sort': '-updatedAt',
                             expand: '',
                             'per-page': perPage,
                             page: page
                         };
-                        return PaymentPayments.getList(FiltersPayments);
+                        return ZoneZones.getList(FiltersZones);
                     }
                 ]
             }
         });
     }])
-    .controller('PaymentListController',
-        ['$scope', '$rootScope', '$modal', '$timeout', '_payments', 'PaymentPayments',
-            function ($scope, $rootScope, $modal, $timeout, _payments, PaymentPayments) {
+    .controller('ZoneListController',
+        ['$scope', '$rootScope', '$modal', '$timeout', '_zones', 'ZoneZones',
+            function ($scope, $rootScope, $modal, $timeout, _zones, ZoneZones) {
+
                 $scope.search = {};
-                $scope.payments = _payments.data;
-                $scope.search.totalItems = _payments.headers('x-pagination-total-count');
-                $scope.search.currentPage = _payments.headers('x-pagination-current-page');
-                $scope.search.itemsPerPage = _payments.headers('x-pagination-per-page');
+                $scope.zones = _zones.data;
+                $scope.search.totalItems = _zones.headers('x-pagination-total-count');
+                $scope.search.currentPage = _zones.headers('x-pagination-current-page');
+                $scope.search.itemsPerPage = _zones.headers('x-pagination-per-page');
                 $scope.search.maxPageSize = 4;
                 $scope.setPerPage = function (perPage) {
                     $scope.search.itemsPerPage = perPage;
-                    goToPaymentsList();
+                    goToZonesList();
 
                 };
 
                 $scope.pageChanged = function () {
 
-                    goToPaymentsList()
+                    goToZonesList()
                 };
-                function goToPaymentsList() {
+                function goToZonesList() {
 
                     var page = $scope.search.currentPage;
                     var perPage = $scope.search.itemsPerPage;
 
-                    var FiltersPayments = {
+                    var FiltersZones = {
                         'sort': '-updatedAt',
                         expand: '',
                         'per-page': perPage,
@@ -58,11 +59,11 @@ angular.module('backend-module.payment')
                     };
 
 
-                    PaymentPayments.getList(
-                        FiltersPayments
+                    ZoneZones.getList(
+                        FiltersZones
                     ).then(function (result) {
 
-                        $scope.payments = result.data;
+                        $scope.zones = result.data;
 
                         $scope.search.totalItems = result.headers('x-pagination-total-count');
                         $scope.search.currentPage = result.headers('x-pagination-current-page');

@@ -208,7 +208,7 @@ body {
 .chat li {
     margin-bottom: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px dotted #999;
+    border-bottom: 1px dotted #4e9935;
 }
 
 .chat li.left .chat-body {

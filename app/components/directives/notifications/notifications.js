@@ -13,7 +13,7 @@ angular.module('APEDevices')
             restrict: 'E',
             replace: true,
             controller: function ($scope) {
-                $scope.ameur = 'ameur';
+                $scope.ameur = 'oumayma';
             }
         }
     });

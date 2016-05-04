@@ -6,6 +6,7 @@ angular.module('backend-module.device')
             templateUrl: 'backend/device/device-edit/device-edit.html',
             controller: 'DeviceEditController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _device: [
                     'DeviceDevices', '$stateParams',
