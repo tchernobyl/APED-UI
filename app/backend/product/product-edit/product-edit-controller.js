@@ -6,6 +6,7 @@ angular.module('backend-module.product')
             templateUrl: 'backend/product/product-edit/product-edit.html',
             controller: 'ProductEditController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _product: [
                     'ProductProducts', '$stateParams',

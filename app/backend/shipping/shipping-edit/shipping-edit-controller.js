@@ -7,6 +7,7 @@ angular.module('backend-module.shipping')
             templateUrl: 'backend/shipping/shipping-edit/shipping-edit.html',
             controller: 'ShippingEditController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _shipping: [
                     'ShippingShippings', '$stateParams',

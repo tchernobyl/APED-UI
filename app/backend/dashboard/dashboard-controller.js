@@ -6,7 +6,8 @@ angular.module('backend-module.dashboard2')
 
             templateUrl: 'backend/dashboard/dashboard.html',
             controller: 'DashboardController',
-            authenticate: true
+            authenticate: true,
+            role: "admin",
         });
     }])
     .controller('DashboardController',

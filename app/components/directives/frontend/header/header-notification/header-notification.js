@@ -25,7 +25,7 @@ angular.module('APEDevices')
                 ).then(function (result) {
                         $scope.userNotification.newestMessages = result.data
                     });
-                $scope.ameur = 'ameur';
+                $scope.ameur = 'oumayma';
             }
         }
     });
