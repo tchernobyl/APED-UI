@@ -67,12 +67,12 @@ angular.module('APEDevices')
         }
     ])
     .config([
-        'RestangularProvider',
-        function (RestangularProvider) {
+        'RestangularProvider','API_CONFIG',
+        function (RestangularProvider,API_CONFIG) {
 
             RestangularProvider
-                .setBaseUrl("http://pfe/backend/")
-                .setDefaultRequestParams({accessToken: "token"})
+                .setBaseUrl(API_CONFIG.baseUrl)
+                .setDefaultRequestParams({accessToken: API_CONFIG.accessToken})
                 .setFullResponse(true);
         }
     ])
