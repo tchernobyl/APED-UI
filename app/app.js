@@ -11,6 +11,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'angular-growl'
     , 'ui.slimscroll'
     , 'angularFileUpload'
+    , 'ngCookies'
 
 
     //components
@@ -51,15 +52,35 @@ var APEDevices = angular.module('APEDevices', [
     , 'frontend-module.compare'
     , 'payment-payments'
     , 'shipping-shippings'
+    , 'loginuser'
+    , 'authentication'
+    , 'settings-settings'
+    , 'customer-password'
 
 
+])
+    .constant('AUTH_EVENTS', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    })
+    .constant('USER_ROLES', {
+        all: '*',
+        admin: 'admin',
+        editor: 'editor',
+        guest: 'guest'
+    })
+        .constant('authorizationHeader', {
+            enabled: false
+        })
 
-]);
-angular.module('APEDevices')
-    .config([
+        .config([
         '$urlRouterProvider',
         function ($urlRouteProvider) {
-            $urlRouteProvider.otherwise('/frontend');
+            $urlRouteProvider.otherwise('/');
         }])
     .config([
         'growlProvider', function (growlProvider) {
@@ -86,6 +107,51 @@ angular.module('APEDevices')
 //        $urlRouterProvider.otherwise('/backend');
 
 
-    }]);
+    }])
+    .run(['$rootScope', 'SITE_CONFIG', '$http',  'Restangular', 'authorizationHeader', '$state', '$stateParams',
+             '$cookieStore', 'Session', 'API_CONFIG', 'API_LOGIN_CONFIG', '$window',
+        function ($rootScope, SITE_CONFIG, $http,  Restangular, authorizationHeader, $state, $stateParams,
+                    $cookieStore, Session, API_CONFIG, API_LOGIN_CONFIG, $window) {
+
+            $rootScope._ = window._;
+            SITE_CONFIG.siteUrl = window.location.origin + "/";
+            Restangular
+                .setErrorInterceptor(function (response, error) {
+
+                    if (response.status === 500) {
+
+
+                    }
+                    if (response.status === 401) {
+                        $rootScope.isLoading = true;
+                        Restangular.requestParams.common.accessToken = null;
+                        $rootScope.destroyCurrentUser();
+                        Session.destroy();
+                        $window.location.reload(true);
+                    }
+
+                });
+
+            if ($cookieStore.get('_session')) {
+                $rootScope.setCurrentUser($cookieStore.get('_session'));
+                $rootScope.UserAccount = $cookieStore.get('userProfile');
+                if (authorizationHeader.enabled) {
+                    Restangular.setDefaultRequestParams({tenantId: $cookieStore.get('_session').tenantId});
+                    Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + $cookieStore.get('_session').accessToken });
+                } else {
+                    Restangular.setDefaultRequestParams({accessToken: $cookieStore.get('_session').accessToken, tenantId: $cookieStore.get('_session').tenantId});
+                    API_CONFIG.accessToken = $cookieStore.get('_session').accessToken;
+                    API_CONFIG.tenantId = $cookieStore.get('_session').tenantId;
+                }
+                ;
+                Restangular.requestParams.common.tenantId = $cookieStore.get('_session').tenantId;
+
+            }
+        }])
+
+
+
+
+            ;
 
     

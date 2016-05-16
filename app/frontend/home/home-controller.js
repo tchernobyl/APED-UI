@@ -3,6 +3,7 @@ angular.module('frontend-module.home')
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('frontend.home', {
             url: '',
+
             resolve: {
 
                 _announcementsList: [
