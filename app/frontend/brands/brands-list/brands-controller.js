@@ -6,6 +6,7 @@ angular.module('frontend-module.brands')
             templateUrl: 'frontend/brands/brands-list/brands-list.html',
             controller: 'BrandsController',
             authenticate: true,
+            userNotAuthenticated:true,
             resolve: {
 
                 _brandsList: [

@@ -6,6 +6,7 @@ angular.module('frontend-module.brands')
             templateUrl: 'frontend/brands/brands-view/brands-view.html',
             controller: 'BrandsViewController',
             authenticate: true,
+            userNotAuthenticated:true,
             resolve: {
                 _brand: [
                     'BrandBrands', '$stateParams', '$state',

@@ -5,7 +5,7 @@ angular.module('frontend-module.products')
             url: '/list?nameSearch&perPage&page',
             templateUrl: 'frontend/products/products-list/products-list.html',
             controller: 'ProductsController',
-            authenticate: true,
+            userNotAuthenticated:true,
             resolve: {
 
                 _productsList: [

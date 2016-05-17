@@ -6,6 +6,7 @@ angular.module('frontend-module.compare')
             templateUrl: 'frontend/compare/compare-devices/compare-devices.html',
             controller: 'compareDevicesController',
             authenticate: true,
+            userNotAuthenticated:true,
             resolve: {
                 _product: [
                     'ProductProducts', '$stateParams', '$state',

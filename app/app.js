@@ -84,7 +84,8 @@ var APEDevices = angular.module('APEDevices', [
         }])
     .config([
         'growlProvider', function (growlProvider) {
-            growlProvider.globalTimeToLive(3000);
+
+                growlProvider.globalTimeToLive({success: 5000, error: 10000, warning:6000, info: 5000});
         }
     ])
     .config([
@@ -127,11 +128,21 @@ var APEDevices = angular.module('APEDevices', [
                         Restangular.requestParams.common.accessToken = null;
                         $rootScope.destroyCurrentUser();
                         Session.destroy();
-                        $window.location.reload(true);
+                        $state.transitionTo(API_LOGIN_CONFIG.loginState);
+                        event.preventDefault();
                     }
 
                 });
-
+            if(localStorage.getItem("basket")){
+                $rootScope.basket= JSON.parse(localStorage.getItem("basket"));
+            }else{
+                $rootScope.basket={
+                    numberItems:0,
+                    totalPrice:0,
+                    listItems:[]
+                }
+            }
+            console.log($rootScope.basket)
             if ($cookieStore.get('_session')) {
                 $rootScope.setCurrentUser($cookieStore.get('_session'));
                 $rootScope.UserAccount = $cookieStore.get('userProfile');
@@ -146,6 +157,8 @@ var APEDevices = angular.module('APEDevices', [
                 ;
                 Restangular.requestParams.common.tenantId = $cookieStore.get('_session').tenantId;
 
+            }else{
+                Restangular.setDefaultRequestParams({accessToken: "", tenantId: ""});
             }
         }])
 

@@ -5,7 +5,7 @@ angular.module('frontend-module.products')
             url: '/view/{id:[0-9]*}?brand_id',
             templateUrl: 'frontend/products/products-view/products-view.html',
             controller: 'ProductsViewController',
-            authenticate: true,
+            userNotAuthenticated:true,
             resolve: {
                 _product: [
                     'ProductProducts', '$stateParams', '$state',

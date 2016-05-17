@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
     <link href="../bower_components/select2/select2.css" rel="stylesheet"/>
     <link href="../bower_components/select2-bootstrap-css/select2-bootstrap.css" rel="stylesheet"/>
+    <link href="../bower_components/angular-growl/build/angular-growl.min.css" rel="stylesheet"/>
     <!-- endbuild -->
 
     <!-- build:js(.) scripts/vendor.js -->
@@ -44,7 +45,7 @@
     <script src="../bower_components/restangular/dist/restangular.min.js"></script>
     <script src="../bower_components/angular-route/angular-route.min.js"></script>
     <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="../bower_components/angular-growl/build/angular-growl.min.js"></script>
+    <script src="../bower_components/angular-growl/build/angular-growl.js"></script>
     <script src="../bower_components/moment/min/moment.min.js"></script>
     <script src="../bower_components/html2canvas/tests/assets/jquery.plugin.html2canvas.js"></script>
     <script src="../bower_components/jspdf/dist/jspdf.debug.js"></script>
@@ -99,8 +100,7 @@
     <script src="components/user-profile/user-profile-service.js"></script>
     <script src="components/customer-password/customer-password.js"></script>
     <script src="components/customer-password/customer-password-service.js"></script>
-    <script src="login/login.js"></script>
-    <script src="login/controllers/login-controller.js"></script>
+
 
 
     <script src="backend/dashboard/dashboard.js"></script>
@@ -124,6 +124,8 @@
     <script src="frontend/dashboard/dashboard.js"></script>
     <script src="frontend/dashboard/dashboard-controller.js"></script>
     <script src="frontend/home/home.js"></script>
+    <script src="login/login.js"></script>
+    <script src="login/controllers/login-controller.js"></script>
     <script src="frontend/home/home-controller.js"></script>
     <script src="frontend/advertisements/advertisements.js"></script>
     <script src="frontend/advertisements/advertisements-list/advertisements-controller.js"></script>
@@ -191,7 +193,7 @@
 </head>
 
 <body>
-
+<div growl></div>
 <div ng-app="APEDevices">
 
     <div ui-view></div>

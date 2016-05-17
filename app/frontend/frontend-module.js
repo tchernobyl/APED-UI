@@ -4,6 +4,7 @@ angular.module('frontend-module', ["frontend-module.dashboard"])
         $stateProvider.state('frontend', {
             abstract: true,
             url: '/frontend',
+            userNotAuthenticated:true,
             templateUrl: 'templates/frontend/main.html',
             resolve: {
                 loadMyDirectives: function ($ocLazyLoad) {

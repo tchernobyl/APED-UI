@@ -6,6 +6,7 @@ angular.module('frontend-module.advertisements')
             templateUrl: 'frontend/advertisements/advertisements-list/advertisements-list.html',
             controller: 'AdvertisementsController',
             authenticate: true,
+            userNotAuthenticated:true,
             resolve: {
 
                 _announcementsList: [

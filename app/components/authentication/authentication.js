@@ -140,14 +140,8 @@ angular.module('authentication', [])
                     }
                 } //to.userNotAuthenticated=true
                 else {
-                    if (AuthService.isAuthenticated()) {
-                        if (!to.userAuthenticated) {
-                            $state.transitionTo(API_LOGIN_CONFIG.dashboardState);
-                            event.preventDefault();
+                    console.log(22666148)
 
-                        }
-
-                    }
                 }
             });
             $rootScope.$on('$stateChangeError', function (event, toState, toParams, fromState, fromParams, error) {

@@ -3,7 +3,7 @@ angular.module('frontend-module.home')
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider.state('frontend.home', {
             url: '',
-
+            userNotAuthenticated:true,
             resolve: {
 
                 _announcementsList: [
