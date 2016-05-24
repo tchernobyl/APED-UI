@@ -5,7 +5,8 @@ angular.module('frontend-module.devices')
             url: '/view/{id:[0-9]*}',
             templateUrl: 'frontend/devices/devices-view/devices-view.html',
             controller: 'DevicesViewController',
-            authenticate: true,
+
+            userNotAuthenticated:true,
             resolve: {
                 _device: [
                     'DeviceDevices', '$stateParams', '$state',

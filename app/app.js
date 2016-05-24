@@ -11,6 +11,7 @@ var APEDevices = angular.module('APEDevices', [
     , 'angular-growl'
     , 'ui.slimscroll'
     , 'angularFileUpload'
+    , 'ngCookies'
 
 
     //components
@@ -34,6 +35,8 @@ var APEDevices = angular.module('APEDevices', [
     , 'backend-module.product'
     , 'backend-module.brand'
     , 'backend-module.category'
+    , 'backend-module.shipping'
+    , 'backend-module.payment'
 
     //modules frontend
     , 'frontend-module'
@@ -47,26 +50,51 @@ var APEDevices = angular.module('APEDevices', [
     , 'frontend-module.user.message'
     , 'frontend-module.user.profile'
     , 'frontend-module.compare'
+    , 'payment-payments'
+    , 'shipping-shippings'
+    , 'loginuser'
+    , 'authentication'
+    , 'settings-settings'
+    , 'customer-password'
 
-]);
-angular.module('APEDevices')
-    .config([
+
+])
+    .constant('AUTH_EVENTS', {
+        loginSuccess: 'auth-login-success',
+        loginFailed: 'auth-login-failed',
+        logoutSuccess: 'auth-logout-success',
+        sessionTimeout: 'auth-session-timeout',
+        notAuthenticated: 'auth-not-authenticated',
+        notAuthorized: 'auth-not-authorized'
+    })
+    .constant('USER_ROLES', {
+        all: '*',
+        admin: 'admin',
+        editor: 'editor',
+        guest: 'guest'
+    })
+        .constant('authorizationHeader', {
+            enabled: false
+        })
+
+        .config([
         '$urlRouterProvider',
         function ($urlRouteProvider) {
-            $urlRouteProvider.otherwise('/frontend');
+            $urlRouteProvider.otherwise('/');
         }])
     .config([
         'growlProvider', function (growlProvider) {
-            growlProvider.globalTimeToLive(3000);
+
+                growlProvider.globalTimeToLive({success: 5000, error: 10000, warning:6000, info: 5000});
         }
     ])
     .config([
-        'RestangularProvider',
-        function (RestangularProvider) {
+        'RestangularProvider','API_CONFIG',
+        function (RestangularProvider,API_CONFIG) {
 
             RestangularProvider
-                .setBaseUrl("http://project/PortalsWay/APEDevices/backend/web/index.php/backend/")
-                .setDefaultRequestParams({accessToken: "token"})
+                .setBaseUrl(API_CONFIG.baseUrl)
+                .setDefaultRequestParams({accessToken: API_CONFIG.accessToken})
                 .setFullResponse(true);
         }
     ])
@@ -80,6 +108,63 @@ angular.module('APEDevices')
 //        $urlRouterProvider.otherwise('/backend');
 
 
-    }]);
+    }])
+    .run(['$rootScope', 'SITE_CONFIG', '$http',  'Restangular', 'authorizationHeader', '$state', '$stateParams',
+             '$cookieStore', 'Session', 'API_CONFIG', 'API_LOGIN_CONFIG', '$window',
+        function ($rootScope, SITE_CONFIG, $http,  Restangular, authorizationHeader, $state, $stateParams,
+                    $cookieStore, Session, API_CONFIG, API_LOGIN_CONFIG, $window) {
+
+            $rootScope._ = window._;
+            SITE_CONFIG.siteUrl = window.location.origin + "/";
+            Restangular
+                .setErrorInterceptor(function (response, error) {
+
+                    if (response.status === 500) {
+
+
+                    }
+                    if (response.status === 401) {
+                        $rootScope.isLoading = true;
+                        Restangular.requestParams.common.accessToken = null;
+                        $rootScope.destroyCurrentUser();
+                        Session.destroy();
+                        $state.transitionTo(API_LOGIN_CONFIG.loginState);
+                        event.preventDefault();
+                    }
+
+                });
+            if(localStorage.getItem("basket")){
+                $rootScope.basket= JSON.parse(localStorage.getItem("basket"));
+            }else{
+                $rootScope.basket={
+                    numberItems:0,
+                    totalPrice:0,
+                    listItems:[]
+                }
+            }
+            console.log($rootScope.basket)
+            if ($cookieStore.get('_session')) {
+                $rootScope.setCurrentUser($cookieStore.get('_session'));
+                $rootScope.UserAccount = $cookieStore.get('userProfile');
+                if (authorizationHeader.enabled) {
+                    Restangular.setDefaultRequestParams({tenantId: $cookieStore.get('_session').tenantId});
+                    Restangular.setDefaultHeaders({'Authorization': 'Bearer ' + $cookieStore.get('_session').accessToken });
+                } else {
+                    Restangular.setDefaultRequestParams({accessToken: $cookieStore.get('_session').accessToken, tenantId: $cookieStore.get('_session').tenantId});
+                    API_CONFIG.accessToken = $cookieStore.get('_session').accessToken;
+                    API_CONFIG.tenantId = $cookieStore.get('_session').tenantId;
+                }
+                ;
+                Restangular.requestParams.common.tenantId = $cookieStore.get('_session').tenantId;
+
+            }else{
+                Restangular.setDefaultRequestParams({accessToken: "", tenantId: ""});
+            }
+        }])
+
+
+
+
+            ;
 
     

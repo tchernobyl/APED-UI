@@ -6,6 +6,7 @@ angular.module('frontend-module.advertisements')
             templateUrl: 'frontend/advertisements/advertisements-edit/advertisements-edit.html',
             controller: 'AdvertisementsEditController',
             authenticate: true,
+            role: "superUser",
             resolve: {
                 _announcement: [
                     'ContentContents', '$stateParams',
@@ -63,6 +64,8 @@ angular.module('frontend-module.advertisements')
                         });
                     }
                 };
+
+
                 $scope.saveAnnouncement = function () {
                     $scope.announcement.ownerId = 1;
                     $scope.announcement.save().then(function () {

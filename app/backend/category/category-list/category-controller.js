@@ -6,6 +6,7 @@ angular.module('backend-module.category')
             templateUrl: 'backend/category/category-list/category.html',
             controller: 'CategoryListController',
             authenticate: true,
+            role: "admin",
             resolve: {
                 _categories: [
                     'CategoryCategories', '$stateParams',
@@ -30,6 +31,7 @@ angular.module('backend-module.category')
             function ($scope, $modal, $timeout, _categories, CategoryCategories) {
                 $scope.categories = _categories.data;
 
+                console.log($scope.categories);
                 $scope.search = {};
 
                 $scope.search.totalItems = _categories.headers('x-pagination-total-count');
@@ -41,6 +43,7 @@ angular.module('backend-module.category')
                     goToCategoriesList();
 
                 };
+
                 $scope.pageChanged = function () {
 
                     goToCategoriesList()
